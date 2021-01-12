@@ -1,6 +1,6 @@
-<?php
-namespace App\Core\Helpers;
+namespace ?
 
+<?php
 /**
  * Class FlashMessage
  *
@@ -37,5 +37,6 @@ class FlashMessage {
     }
 }
 
+?>
 
 

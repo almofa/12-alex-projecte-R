@@ -5,7 +5,7 @@ namespace App\Core\Exception;
 use Exception;
 use Throwable;
 
-class NotFoundException extends AppException
+class NotFoundException extends Exception
 {
 public function __construct($message = "Not found exception", $code = 0, Throwable $previous = null)
 {

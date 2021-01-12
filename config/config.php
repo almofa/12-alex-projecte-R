@@ -25,11 +25,4 @@ return [
         'email' => 'vjorda.pego@gmail.com',
         'name' => 'Vicent Jordà'
     ],
-    "security" => ["roles" =>
-        [
-            "ROLE_ADMIN" => 3,
-            "ROLE_USER" => 2,
-            "ROLE_ANONYMOUS" => 1
-        ]
-    ]
 ];

@@ -3,7 +3,7 @@ namespace App\Core\Exception;
 
 use Exception;
 
-class ModelException extends AppException
+class ModelException extends Exception
 {
 
 }
