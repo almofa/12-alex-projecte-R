@@ -17,7 +17,8 @@ class AuthController extends Controller
 {
     public function login()
     {
-        return $this->response->renderView('auth/login', 'default');
+        $router = App::get(Router::class);
+        return $this->response->renderView('login', 'default');
     }
 
     public function checkLogin()
@@ -28,12 +29,14 @@ class AuthController extends Controller
 
         if (!empty($username) && !empty($password)) {
             $userModel = App::getModel(UserModel::class);
-            $router = App::get(Router::class);
+
 
             $user = $userModel->findOneBy(["username" => $username]);
             if (!empty($user)) {
-                App::get('flash')->set('message', 'Has entrat');
-                App::get("redirect")::redirect("movies");
+                if($user["username"] == $username && $user["password"] == $password) {
+                    App::get('flash')->set('message', 'Has entrat');
+                    App::get("redirect")::redirect("movies");
+                }
             } else {
 
                 App::get('flash')->set("message", "No s'ha pogut iniciar sessió");

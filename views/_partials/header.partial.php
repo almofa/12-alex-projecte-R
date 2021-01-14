@@ -21,7 +21,7 @@
             <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item ">
                     <a class="nav-item nav-link mr-md-2" id="bd-versions" aria-haspopup="false"
-                       aria-expanded="false" href="http://movie/login">
+                       aria-expanded="false" href="/auth/login">
                         Log in
                     </a>
 
