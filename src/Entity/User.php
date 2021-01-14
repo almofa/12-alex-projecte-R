@@ -3,25 +3,14 @@
 namespace App\Entity;
 
 use App\Core\Entity;
-use App\Model\UserModel;
 
 
-class User implements Entity
+class User
 {
     private ?int $id = null;
     private string $username;
     private string $password;
     private string $role;
-
-    /**
-     * User constructor.
-     * @param int|null $id
-     * @param string $username
-     * @param string $password
-     * @param string $role
-     */
-
-
 
     /**
      * @return int|null

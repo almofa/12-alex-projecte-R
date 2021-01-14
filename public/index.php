@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 use App\Core\App;
 use App\Core\Request;
 use App\Core\Router;

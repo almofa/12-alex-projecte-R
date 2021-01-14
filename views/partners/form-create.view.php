@@ -1,4 +1,4 @@
-<form action="<? $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data" novalidate>
+<form action="" method="post" enctype="multipart/form-data" novalidate>
     <div class="form-group">
         <label for="name">Name:</label>
         <input id="name" class="form-control" type="text" name="name" required>

@@ -26,8 +26,9 @@ class PartnerController extends Controller
         $router = App::get(Router::class);
         $partnersPath = App::get("config")["partners_path"];
         $partners = $partnerModel->findAll(["name" => "ASC"]);
+        $message = App::get("flash")::get("message");
         return $this->response->renderView("partners", "default",
-            compact('title', 'partners', 'router', 'partnersPath'));
+            compact('title', 'partners', 'router', 'partnersPath','message'));
     }
 
     function filter(): string
@@ -76,7 +77,7 @@ class PartnerController extends Controller
         // if there are errors we don't upload image file
         if (empty($errors)) {
             try {
-                $uploadedFile = new UploadedFile("logo", "300");
+                $uploadedFile = new UploadedFile("logo", "300000");
                 if ($uploadedFile->validate()) {
                     // we get the path form config file
                     $directory = App::get("config")["partners_path"];
@@ -84,6 +85,8 @@ class PartnerController extends Controller
                     $uploadedFile->save($directory, uniqid("PTN"));
                     // we get the generated name to save it in the db
                     $filename = $uploadedFile->getFileName();
+
+
                 }
             } catch (UploadedFileNoFileException $uploadedFileNoFileException) {
                 $errors[] = $uploadedFileNoFileException->getMessage();
@@ -100,6 +103,9 @@ class PartnerController extends Controller
 
                 $partnerModel = App::getModel(PartnerModel::class);
                 $partnerModel->save($partner);
+
+                App::get("flash")->set("message", "S'ha creat correctament");
+                App::get("redirect")::redirect("partners");
 
             } catch (Exception $e) {
                 $errors[] = 'Error: ' . $e->getMessage();

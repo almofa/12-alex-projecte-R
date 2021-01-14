@@ -1,14 +1,5 @@
-<?php use App\Core\App;
-?>
+
 <div class="container" >
-    <?php if (!empty($message)){?>
-        <div class="alert alert-danger" role="alert">
-            <?=$message?>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    <?php } ?>
     <div class="row">
         <div class="col-sm-12">
             <h3>Login</h3>

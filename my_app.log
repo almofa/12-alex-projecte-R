@@ -36,3 +36,4 @@
 [2020-12-15T20:16:40.010306+01:00] app.ERROR: La grandària de la imatge (6795)              supera el límit establert: 300 [] []
 [2020-12-29T10:57:47.324294+01:00] app.ERROR: La grandària de la imatge (76947)              supera el límit establert: 300 [] []
 [2020-12-29T10:57:58.274378+01:00] app.ERROR: La grandària de la imatge (84840)              supera el límit establert: 300 [] []
+[2021-01-13T10:02:36.526732+01:00] app.ERROR: La grandària de la imatge (19818)              supera el límit establert: 300 [] []

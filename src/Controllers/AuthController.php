@@ -4,7 +4,6 @@
 namespace App\Controllers;
 use App\Core\Controller;
 use App\Core\App;
-use App\Core\Helpers\FlashMessage;
 use App\Model\UserModel;
 use App\Core\Router;
 use App\Database;
@@ -18,8 +17,7 @@ class AuthController extends Controller
 {
     public function login()
     {
-        $message = App::get("flash")::get("message");
-        return $this->response->renderView('auth/login', 'default', compact('message'));
+        return $this->response->renderView('auth/login', 'default');
     }
 
     public function checkLogin()
@@ -29,23 +27,17 @@ class AuthController extends Controller
         $password = filter_input(INPUT_POST, 'password');
 
         if (!empty($username) && !empty($password)) {
-            $pdo = App::get("DB");
-            $userModel = new UserModel($pdo);
+            $userModel = App::getModel(UserModel::class);
             $router = App::get(Router::class);
+
             $user = $userModel->findOneBy(["username" => $username]);
             if (!empty($user)) {
-
-
-                if($user->getUsername() == $username && $user->getPassword() == $password) {
-                    $_SESSION["loggedUser"] = $user->getId();
-
-                    App::get('flash')->set('message', 'Has entrat');
-                    App::get("redirect")::redirect("movies");
-                }
+                App::get('flash')->set('message', 'Has entrat');
+                App::get("redirect")::redirect("movies");
             } else {
 
-               $message = App::get('flash')->set("message", "No s'ha pogut iniciar sessió");
-                App::get('redirect')->redirect("login");
+                App::get('flash')->set("message", "No s'ha pogut iniciar sessió");
+                App::get('router')->redirect("/login");
             }
         }
     }
@@ -53,9 +45,8 @@ class AuthController extends Controller
     public function logout()
     {
         session_unset();
+        unset($_SESSION);
         session_destroy();
-        setcookie(session_name());
-        App::get('redirect')->redirect("");
-        return $this->response->renderView('auth/login');
+        App::get('router')->redirect("/");
     }
 }

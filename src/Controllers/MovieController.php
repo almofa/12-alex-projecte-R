@@ -49,9 +49,9 @@ class MovieController extends Controller
             }
         }
         $router = App::get(Router::class);
-
+        $message = App::get("flash")::get("message");
         return $this->response->renderView("movies", "default", compact('title', 'movies',
-            'movieModel', 'errors', 'router'));
+            'movieModel', 'errors', 'router','message'));
     }
 
     /**
@@ -161,6 +161,9 @@ class MovieController extends Controller
                 $movie->setTagline($tagline);
                 $movie->setPoster($filename);
                 $movie->setGenreId($genre_id);
+
+                App::get("flash")->set("message", "S'ha creat correctament");
+                App::get("redirect")::redirect("movies");
 
                 $movieModel->saveTransaction($movie);
                 App::get(MyLogger::class)->info("S'ha creat una nova pel·lícula");
