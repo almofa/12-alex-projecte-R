@@ -21,8 +21,18 @@
             <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item ">
                     <a class="nav-item nav-link mr-md-2" id="bd-versions" aria-haspopup="false"
-                       aria-expanded="false" href="/auth/login">
-                        Log in
+                       aria-expanded="false"
+                        <?php if(!empty($_SESSION['loggedUser'])):?>
+                       href="/login"
+                        <?php else:?>
+                            href="/logout"
+                        <?php endif; ?>
+                            >
+                        <?php if(!empty($_SESSION['loggedUser'])):?>
+                            Log out
+                        <?php else:?>
+                            Log in
+                        <?php endif; ?>
                     </a>
 
                 </li>

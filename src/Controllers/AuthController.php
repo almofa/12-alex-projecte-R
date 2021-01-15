@@ -17,8 +17,8 @@ class AuthController extends Controller
 {
     public function login()
     {
-        $router = App::get(Router::class);
-        return $this->response->renderView('login', 'default');
+        $message = App::get("flash")::get("message");
+        return $this->response->renderView('auth/login', 'default', compact('message'));
     }
 
     public function checkLogin()
@@ -28,19 +28,22 @@ class AuthController extends Controller
         $password = filter_input(INPUT_POST, 'password');
 
         if (!empty($username) && !empty($password)) {
-            $userModel = App::getModel(UserModel::class);
-
-
+            $pdo = App::get("DB");
+            $userModel = new UserModel($pdo);
+            $router = App::get(Router::class);
             $user = $userModel->findOneBy(["username" => $username]);
             if (!empty($user)) {
-                if($user["username"] == $username && $user["password"] == $password) {
+
+                if($user->getUsername() == $username && $user->getPassword() == $password) {
+                    $_SESSION["loggedUser"] = $user->getId();
+
                     App::get('flash')->set('message', 'Has entrat');
                     App::get("redirect")::redirect("movies");
                 }
             } else {
 
-                App::get('flash')->set("message", "No s'ha pogut iniciar sessió");
-                App::get('router')->redirect("/login");
+               $message = App::get('flash')->set("message", "No s'ha pogut iniciar sessió");
+                App::get('redirect')->redirect("login");
             }
         }
     }

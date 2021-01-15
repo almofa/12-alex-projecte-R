@@ -37,7 +37,10 @@ $router->post("partners/:id/edit", "PartnerController", "update", ["id"=>"number
 $router->get("partners/:id/delete", "PartnerController", "delete", ["id"=>"number"], "partners_delete");
 $router->post("partners/delete", "PartnerController", "destroy", [], "partners_destroy");
 
-$router->get("auth/login", "AuthController", "login", [], "login");
-$router->post("/movies", "AuthController", "logged", [], "loggedUser");
+$router->get("login", "AuthController", "login");
+$router->post("login", "AuthController", "checkLogin");
+
+$router->get("logout", "AuthController", "logout");
+$router->post("logout", "AuthController", "checkLogin");
 
 

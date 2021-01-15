@@ -1,3 +1,11 @@
+<?php if (!empty($message)){?>
+    <div class="alert alert-success" role="alert">
+        <?=$message ?>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+<?php } ?>
 <div class="container">
     <div class="row">
         <div class="col-12">
