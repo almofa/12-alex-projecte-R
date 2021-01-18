@@ -53,6 +53,6 @@ class AuthController extends Controller
         session_unset();
         unset($_SESSION);
         session_destroy();
-        App::get('router')->redirect("/");
+        App::get('redirect')->redirect("movies");
     }
 }

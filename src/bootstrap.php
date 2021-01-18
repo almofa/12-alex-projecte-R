@@ -3,8 +3,10 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\Core\App;
+use App\Core\Exception\NotFoundException;
 use App\Core\Response;
 use App\Database;
+use App\Model\UserModel;
 use App\Utils\MyLogger;
 use App\Utils\MyMail;
 use Monolog\Handler\StreamHandler;
@@ -31,3 +33,16 @@ App::bind(MyLogger::class, $myLogger);
 // data and returns a myMail object
 $myMail = MyMail::load($config["mailer"]);
 App::bind(MyMail::class, $myMail);
+
+$loggedUser = $_SESSION["loggedUser"] ?? 0;
+$id = filter_var($loggedUser, FILTER_VALIDATE_INT);
+if (!empty($id)) {
+    try {
+        App::bind('user', App::getModel(UserModel::class)->find($id));
+    }
+    catch (NotFoundException $notFoundException) {
+        App::bind('user',null);
+    }
+}
+else
+    App::bind('user', null);

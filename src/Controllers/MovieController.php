@@ -8,6 +8,7 @@ use App\Core\Controller;
 use App\Core\Exception\ModelException;
 use App\Core\Exception\NotFoundException;
 use App\Core\Router;
+use App\Core\Security;
 use App\Entity\Movie;
 use App\Exception\UploadedFileException;
 use App\Exception\UploadedFileNoFileException;
@@ -32,6 +33,9 @@ class MovieController extends Controller
      */
     public function index(): string
     {
+        if (!Security::isAuthenticatedUser())
+            App::get(Router::class)->redirect('login');
+
         $title = "Movies - Movie FX";
         $errors = [];
 
@@ -103,6 +107,9 @@ class MovieController extends Controller
      */
     public function create(): string
     {
+        if (!Security::isAuthenticatedUser())
+            App::get(Router::class)->redirect('login');
+
         $genreModel = new GenreModel(App::get("DB"));
         $genres = $genreModel->findAll(["name" => "ASC"]);
 
@@ -115,6 +122,9 @@ class MovieController extends Controller
      */
     public function store(): string
     {
+        if (!Security::isAuthenticatedUser())
+            App::get(Router::class)->redirect('login');
+
         $errors = [];
         $pdo = App::get("DB");
         $genreModel = new GenreModel($pdo);
@@ -188,6 +198,9 @@ class MovieController extends Controller
      */
     public function delete(int $id): string
     {
+        if (!Security::isAuthenticatedUser())
+            App::get(Router::class)->redirect('login');
+
         $errors = [];
         $movie = null;
         $movieModel = App::getModel(MovieModel::class);
@@ -216,6 +229,9 @@ class MovieController extends Controller
      */
     public function destroy(): string
     {
+        if (!Security::isAuthenticatedUser())
+            App::get(Router::class)->redirect('login');
+
         $errors = [];
         $movieModel = App::getModel(MovieModel::class);
         $movie = null;
@@ -258,6 +274,9 @@ class MovieController extends Controller
 
     public function edit(int $id): string
     {
+        if (!Security::isAuthenticatedUser())
+            App::get(Router::class)->redirect('login');
+
         $isGetMethod = true;
         $errors = [];
         $movieModel = App::getModel(MovieModel::class);

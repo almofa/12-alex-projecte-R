@@ -17,25 +17,25 @@
                     <a class="nav-link" href="/movies">Movies</a>
                 </li>
             </ul>
-
+            <?php $loggedUser = $_SESSION['loggedUser']??[] ?>
             <ul class="nav navbar-nav ml-auto">
+                <?php if($loggedUser != []):?>
                 <li class="nav-item ">
                     <a class="nav-item nav-link mr-md-2" id="bd-versions" aria-haspopup="false"
-                       aria-expanded="false"
-                        <?php if(!empty($_SESSION['loggedUser'])):?>
-                       href="/login"
-                        <?php else:?>
-                            href="/logout"
-                        <?php endif; ?>
-                            >
-                        <?php if(!empty($_SESSION['loggedUser'])):?>
-                            Log out
-                        <?php else:?>
-                            Log in
-                        <?php endif; ?>
+                       aria-expanded="false" href="/logout">
+                        Log out
                     </a>
 
                 </li>
+                <?php else:?>
+                <li class="nav-item ">
+                    <a class="nav-item nav-link mr-md-2" id="bd-versions" aria-haspopup="false"
+                       aria-expanded="false" href="/login">
+                        Log in
+                    </a>
+
+                </li>
+                <?php endif;?>
                 <li class="nav-item">
                     <a class="nav-item nav-link" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false"
                        href="">
