@@ -2,6 +2,7 @@
 
 namespace App\Core;
 
+use App\Core\Exception\AppException;
 use App\Core\Exception\ModelException;
 use App\Core\Exception\NotFoundException;
 use Exception;
@@ -46,8 +47,8 @@ abstract class Model
                 //var_dump($stmt);
             }
             return $stmt->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, $this->className);
-        }catch (Exception $exception) {
-            throw new Exception("Model error". $exception->getMessage());
+        }catch (AppException $exception) {
+            throw new AppException("Model error". $exception->getMessage());
         }
     }
 
@@ -63,7 +64,7 @@ abstract class Model
         $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, $this->className);
         $e = $stmt->fetch();
         if (empty($e)) {
-            throw new NotFoundException("Cannot found a {$this->className} entity with id=$id");
+            throw new AppException("Cannot found a {$this->className} entity with id=$id");
         }
         return $e;
     }
@@ -148,8 +149,8 @@ abstract class Model
             $entity->setId($this->pdo->lastInsertId());
             return true;
         }
-        catch (Exception $e) {
-            throw new ModelException("Model error: " . $e->getMessage());
+        catch (AppException $e) {
+            throw new AppException("Model error: " . $e->getMessage());
         }
 
     }
@@ -205,8 +206,8 @@ abstract class Model
             } else
                 return false;
 
-        } catch (Exception $e) {
-            throw new ModelException("Error: " . $e->getMessage());
+        } catch (AppException $e) {
+            throw new AppException("Error: " . $e->getMessage());
 
         }// tanque catch
     }
@@ -232,8 +233,8 @@ abstract class Model
                 return true;
             } else
                 return false;
-        } catch (Exception $exception) {
-            throw new ModelException("Model exception: {$exception->getMessage()}");
+        } catch (AppException $exception) {
+            throw new AppException("Model exception: {$exception->getMessage()}");
         }
 
     }
@@ -254,8 +255,8 @@ abstract class Model
             }
             return $pdoStatement->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, $this->className);
 
-        } catch (Exception $exception) {
-            throw new ModelException("Model exception: {$exception->getMessage()}");
+        } catch (AppException $exception) {
+            throw new AppException("Model exception: {$exception->getMessage()}");
         }
     }
 
@@ -314,8 +315,8 @@ abstract class Model
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, $this->className);
             return $stmt->fetchAll();
-        }catch (PDOException $PDOException){
-            throw new ModelException("pagination error: ".$PDOException->getMessage());
+        }catch (AppException $PDOException){
+            throw new AppException("pagination error: ".$PDOException->getMessage());
         }
     }
 }

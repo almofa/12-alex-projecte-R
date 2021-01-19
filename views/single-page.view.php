@@ -16,9 +16,9 @@
                 <p class="text-muted">★ ★ ★ ★ ☆</p>
             </div>
         <?php else :?>
-            <? foreach ($errors as $error) : ?>
+            <? foreach ($errors as $error) ?>
                 <h3><?= $error ?></h3>
-            <?php endforeach; ?>
+
         <?php endif ?>
     </div> <!-- /.row -->
 </div> <!-- /.container -->

@@ -1,4 +1,6 @@
 <?php
+session_cache_expire(15);
+session_start();
 
 require_once __DIR__ . '/../vendor/autoload.php';
 

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Core;
 
+use App\Core\Exception\AuthorizationException;
 use App\Core\Exception\NotFoundException;
 
 /**
@@ -29,11 +30,13 @@ class Router
     }
 
     public function post(string $path, string $controller, string $action,
-                         array $parameters = [], string $name = "",
-                         string $role = 'ROLE_ANONYMOUS'): void
+                        array $parameters = [], string $name = "",
+                        string $role = 'ROLE_ANONYMOUS'): void
     {
-        $this->routes["POST"][$path] = ["controller" => $controller, "action" => $action,
-            "parameters" => $parameters, "name" => $name, "role"=>$role];
+
+        $this->routes["POST"][$path] = ["controller" => $controller,
+            "action" => $action, "parameters" => $parameters,
+            "name" => $name, "role"=>$role];
     }
 
     public function route(string $url, string $method): string
@@ -41,7 +44,7 @@ class Router
         // ruta sol·licitada per l'usuari
         // /movies/17/show
         $requestedUrl = $url;
-            // movies/\d+/show
+
         foreach ($this->routes[$method] as $route => $data) {
             // movies/\d+/show
             $regexRoute = $this->getRegexRoute($route, $data);
@@ -50,6 +53,7 @@ class Router
                 if (!Security::isUserGranted($role))
                     throw new
                     AuthorizationException('You do not have access permissions');
+
                 $class = "\\App\\Controllers\\" . $data["controller"];
                 $instance = new $class;
                 $action = $data["action"];

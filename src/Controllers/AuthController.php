@@ -34,6 +34,7 @@ class AuthController extends Controller
             $user = $userModel->findOneBy(["username" => $username]);
             if (!empty($user)) {
 
+
                 if($user->getUsername() == $username && $user->getPassword() == $password) {
                     $_SESSION["loggedUser"] = $user->getId();
 
@@ -53,6 +54,6 @@ class AuthController extends Controller
         session_unset();
         unset($_SESSION);
         session_destroy();
-        App::get('redirect')->redirect("movies");
+        App::get('redirect')->redirect("");
     }
 }
