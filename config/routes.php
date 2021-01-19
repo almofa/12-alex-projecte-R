@@ -9,7 +9,7 @@ $router->get("api/demo", "DefaultController", "demo");
 
 /* Movies routes */
 
-$router->get("movies", "MovieController", "index");
+$router->get("movies", "MovieController", "index", [], "", "ROLE_USER");
 $router->post("movies", "MovieController", "filter");
 
 $router->get("movies/:id/show", "MovieController", "show",
