@@ -39,4 +39,15 @@ class Security
         return ($userRoleValue >= $minRoleValue);
     }
 
+    public static function encode(string $password): bool{
+        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+        return $passwordHash;
+    }
+public static function checkPassword(string $password, string $userPassword): bool{
+    return password_verify($password, $userPassword);
+
+}
+
+
+
 }

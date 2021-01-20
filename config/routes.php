@@ -13,7 +13,7 @@ $router->get("movies", "MovieController", "index", [], "", "ROLE_USER");
 $router->post("movies", "MovieController", "filter", [], "","ROLE_USER");
 
 $router->get("movies/:id/show", "MovieController", "show",
-    ["id" => "number"], "movies_show", "ROLE_USER");
+    ["id" => "number"], "movies_show");
 
 $router->get("movies/create", "MovieController", "create", [], "", "ROLE_USER");
 $router->post("movies/create", "MovieController", "store", [],"", "ROLE_USER");

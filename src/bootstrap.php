@@ -1,6 +1,15 @@
 <?php
-session_cache_expire(15);
+ini_set("session.cookie_httponly", 1);
+ini_set("session.cookie_secure",0);
+
+session_name('APP');
 session_start();
+if(isset($_SESSION["limit"])){
+    $_SESSION['limit'] = time();
+}elseif ((time()-$_SESSION['limit']) > 900){
+    session_regenerate_id(true);
+    $_SESSION['limit'] = time();
+}
 
 require_once __DIR__ . '/../vendor/autoload.php';
 

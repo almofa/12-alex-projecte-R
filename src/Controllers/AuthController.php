@@ -4,6 +4,7 @@
 namespace App\Controllers;
 use App\Core\Controller;
 use App\Core\App;
+use App\Core\Helpers\FlashMessage;
 use App\Model\UserModel;
 use App\Core\Router;
 use App\Database;
@@ -52,8 +53,9 @@ class AuthController extends Controller
     public function logout()
     {
         session_unset();
-        unset($_SESSION);
         session_destroy();
+        setcookie(session_name());
         App::get('redirect')->redirect("");
+        return $this->response->renderView('auth/login');
     }
 }
