@@ -26,4 +26,4 @@ function generar_imagen_local(string $ruta, string $url, string $alt = "imagen",
     return $img;
 }
 
-
+//holaa que tal
