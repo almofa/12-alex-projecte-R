@@ -9,7 +9,7 @@
 </head>
 <body class="d-flex flex-column min-vh-100">
 <header>
-    <?php require __DIR__ . '/../_partials/header.partial.php' ?>
+    <?php require __DIR__ . '/../_partials/header.php' ?>
 </header>
 <main class="mt-2 flex-fill">
 <?=$content?>
