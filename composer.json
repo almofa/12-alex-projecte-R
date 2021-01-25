@@ -1,0 +1,27 @@
+{
+  "name": "vendor_name/00-vicent",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "alumne",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+    "ext-pdo": "*",
+    "ext-json": "*",
+    "monolog/monolog": "^2.2",
+    "swiftmailer/swiftmailer": "^6.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    },
+    "files": ["inc/functions.php"]
+  },
+  "require-dev": {
+    "phpstan/phpstan": "^0.12.64"
+  }
+}
