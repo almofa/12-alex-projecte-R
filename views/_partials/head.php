@@ -1,9 +1,9 @@
 
 <meta charset="UTF-8">
 <title>ACTIFARMA</title>
-<link rel="stylesheet" href="./estils/estils.css">
-<link rel="stylesheet" href="./estils/template_grid3.css">
-<link rel="stylesheet" href="./estils/normalize.css">
+<link rel="stylesheet" href="../../public/css/estils.css">
+<link rel="stylesheet" href="../../public/css/template_grid3.css">
+<link rel="stylesheet" href="../../public/css/normalize.css">
 <link rel="shortcut icon" href="./img/ACTIFARMAmini.png" >
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

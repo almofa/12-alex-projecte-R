@@ -1,6 +1,6 @@
 @font-face {
     font-family: "LibreFranklin";
-    src: url("../../../../../../Users/xxbya/OneDrive/Escritorio/amorell.atwebpages.com/fonts/LibreFranklin-MediumItalic.ttf");
+    src: url("../font/LibreFranklin-MediumItalic.ttf");
   }
   
 *{
@@ -15,7 +15,7 @@
   }
   
   html{
-    background-image: url("../../../../../../Users/xxbya/OneDrive/Escritorio/amorell.atwebpages.com/img/fondologin.png");
+    background-image: url("../images/fondologin.png");
     background-size: cover;
     background-repeat: no-repeat;
   }
@@ -54,7 +54,7 @@
   }
     .legend:after{
       content: "";
-      background-image: url("../../../../../../Users/xxbya/OneDrive/Escritorio/amorell.atwebpages.com/img/ACTIFARMAsense.png");
+      background-image: url("../images/ACTIFARMAsense.png");
       background-size: cover;
       background-repeat: no-repeat;
       

@@ -1,7 +1,7 @@
 <div class="container-fluid capsalera">
     <div class="row filacapsalera">
         <div class="col-3 logoempresa ">
-            <a href="./Home.html"><img class="logo" src="./img/ACTIFARMA.png" alt="ActiFarma"></a>
+            <a href="./Home.html"><img class="logo" src="../../public/images/ACTIFARMA.png" alt="ActiFarma"></a>
         </div>
         <div class="col-5 buscadorheader alinearcap">
             <form class="searchinput" action="">
