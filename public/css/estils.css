@@ -1,6 +1,6 @@
 @font-face {
   font-family: "LibreFranklin";
-  src: url("../fonts/LibreFranklin-MediumItalic.ttf");
+  src: url("/font/LibreFranklin-MediumItalic.ttf");
 }
 
 *{margin: 0; 
@@ -144,21 +144,21 @@ form.searchinput input[type=search] {
 
 
 #primerr{
-  background-image: url("../img/cosmetica.jpg");
+  background-image: url("/images/cosmetica.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
 
 #segonn{
-  background-image: url("../img/higiene.jpg");
+  background-image: url("/images/higiene.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
 
 #tercerr{
-  background-image: url("../img/salud.jpg");
+  background-image: url("/images/salud.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -251,28 +251,28 @@ form.searchinput input[type=search] {
 }
 
 #primerpatro{
-  background-image: url("../img/uriage-logo.png");
+  background-image: url("/images/uriage-logo.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
 
 #segonpatro{
-  background-image: url("../img/eucerin_logo.jpg");
+  background-image: url("/images/eucerin_logo.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
 
 #tercerpatro{
-  background-image: url("../img/cinfa_logo.jpg");
+  background-image: url("/images/cinfa_logo.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
 
 #cuartpatro{
-  background-image: url("../img/shiseido_logo.png");
+  background-image: url("/images/shiseido_logo.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -435,7 +435,7 @@ input[type=reset]:hover {
 }
 
 .filasobre{
-  background-image: url("../img/banner.png");
+  background-image: url("/images/banner.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 150px -10px;
@@ -544,7 +544,7 @@ input[type=reset]:hover {
 }
 
 .filacontacta{
-  background-image: url("../img/support.png");
+  background-image: url("/images/support.png");
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;

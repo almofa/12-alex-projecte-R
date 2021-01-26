@@ -6,7 +6,7 @@
     <div class="row filamain">
 
         <div class="col-9 carrusel">
-            <img class="bannerhome" src="./img/bannerfarmacia.jpg" alt="banner">
+            <img class="bannerhome" src="/images/bannerfarmacia.jpg" alt="banner">
         </div>
 
 

@@ -1,10 +1,10 @@
 
 <meta charset="UTF-8">
 <title>ACTIFARMA</title>
-<link rel="stylesheet" href="../../public/css/estils.css">
-<link rel="stylesheet" href="../../public/css/template_grid3.css">
-<link rel="stylesheet" href="../../public/css/normalize.css">
-<link rel="shortcut icon" href="./img/ACTIFARMAmini.png" >
+<link rel="stylesheet" href="/css/estils.css">
+<link rel="stylesheet" href="/css/template_grid3.css">
+<link rel="stylesheet" href="/css/normalize.css">
+<link rel="shortcut icon" href="/images/ACTIFARMAmini.png" >
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
