@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>Contact form</h1>
+    <h1>Formulari de contacte </h1>
     <? if ($_SERVER['REQUEST_METHOD']==='POST' && empty($errors)) :?>
     <h2>Missatge enviat</h2>
         <p>Nom: <?=$name ?></p>
@@ -39,7 +39,7 @@
             </div>
             <div class="col-sm-6">
             <div class="form-group">
-                <label for="subject">Subject:</label>
+                <label for="subject">Subjecte:</label>
                     <input  id="subject" class="form-control" type="text" name="subject">
 
             </div>

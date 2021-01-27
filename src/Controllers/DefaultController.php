@@ -57,6 +57,138 @@ class DefaultController extends Controller
 
     }
 
+    public function sobre(): string
+    {
+        try {
+            $movieModel = App::getModel(MovieModel::class);
+            $movies = $movieModel->findAllPaginated(1, 8,
+                ["release_date" => "DESC", "title" => "ASC"]);
+
+            $partnerModel = App::getModel(PartnerModel::class);
+            $partners = $partnerModel->findAll();
+
+            $genreModel = App::getModel(GenreModel::class);
+            $genres = $genreModel->findAll(["name" => "ASC"]);
+
+
+            shuffle($partners);
+            $partners = array_slice($partners, 0, 4);
+
+
+            $router = App::get(Router::class);
+
+            $partnersPath = App::get("config")["partners_path"];
+
+            return $this->response->renderView("sobre", "default", compact( 'partners',
+                'movies', 'genres', 'router', 'partnersPath'));
+
+        } catch (PDOException $PDOException) {
+            return $PDOException->getMessage();
+        } catch (Exception $exception) {
+            return $exception->getMessage();
+        }
+
+    }
+
+    public function local(): string
+    {
+        try {
+            $movieModel = App::getModel(MovieModel::class);
+            $movies = $movieModel->findAllPaginated(1, 8,
+                ["release_date" => "DESC", "title" => "ASC"]);
+
+            $partnerModel = App::getModel(PartnerModel::class);
+            $partners = $partnerModel->findAll();
+
+            $genreModel = App::getModel(GenreModel::class);
+            $genres = $genreModel->findAll(["name" => "ASC"]);
+
+
+            shuffle($partners);
+            $partners = array_slice($partners, 0, 4);
+
+
+            $router = App::get(Router::class);
+
+            $partnersPath = App::get("config")["partners_path"];
+
+            return $this->response->renderView("localitzacio", "default", compact( 'partners',
+                'movies', 'genres', 'router', 'partnersPath'));
+
+        } catch (PDOException $PDOException) {
+            return $PDOException->getMessage();
+        } catch (Exception $exception) {
+            return $exception->getMessage();
+        }
+
+    }
+
+    public function preguntes(): string
+    {
+        try {
+            $movieModel = App::getModel(MovieModel::class);
+            $movies = $movieModel->findAllPaginated(1, 8,
+                ["release_date" => "DESC", "title" => "ASC"]);
+
+            $partnerModel = App::getModel(PartnerModel::class);
+            $partners = $partnerModel->findAll();
+
+            $genreModel = App::getModel(GenreModel::class);
+            $genres = $genreModel->findAll(["name" => "ASC"]);
+
+
+            shuffle($partners);
+            $partners = array_slice($partners, 0, 4);
+
+
+            $router = App::get(Router::class);
+
+            $partnersPath = App::get("config")["partners_path"];
+
+            return $this->response->renderView("pregfrequents", "default", compact( 'partners',
+                'movies', 'genres', 'router', 'partnersPath'));
+
+        } catch (PDOException $PDOException) {
+            return $PDOException->getMessage();
+        } catch (Exception $exception) {
+            return $exception->getMessage();
+        }
+
+    }
+
+    public function tenda(): string
+    {
+        try {
+            $movieModel = App::getModel(MovieModel::class);
+            $movies = $movieModel->findAllPaginated(1, 8,
+                ["release_date" => "DESC", "title" => "ASC"]);
+
+            $partnerModel = App::getModel(PartnerModel::class);
+            $partners = $partnerModel->findAll();
+
+            $genreModel = App::getModel(GenreModel::class);
+            $genres = $genreModel->findAll(["name" => "ASC"]);
+
+
+            shuffle($partners);
+            $partners = array_slice($partners, 0, 4);
+
+
+            $router = App::get(Router::class);
+
+            $partnersPath = App::get("config")["partners_path"];
+
+            return $this->response->renderView("tenda", "default", compact( 'partners',
+                'movies', 'genres', 'router', 'partnersPath'));
+
+        } catch (PDOException $PDOException) {
+            return $PDOException->getMessage();
+        } catch (Exception $exception) {
+            return $exception->getMessage();
+        }
+
+    }
+
     /**
      * @return string
      * @throws Exception

@@ -1,7 +1,7 @@
 <div class="container-fluid capsalera">
     <div class="row filacapsalera">
         <div class="col-3 logoempresa ">
-            <a href="./Home.html"><img class="logo" src="/images/ACTIFARMA.png" alt="ActiFarma"></a>
+            <a href="/"><img class="logo" src="/images/ACTIFARMA.png" alt="ActiFarma"></a>
         </div>
         <div class="col-5 buscadorheader alinearcap">
             <form class="searchinput" action="">
@@ -32,22 +32,22 @@
 <div class="container-fluid navbar">
     <div class="row filanav">
         <div class="col-2 navitems">
-            <a href="./SobreNosaltres.html">
+            <a href="sobre">
                 Sobre Nosaltres
             </a>
         </div>
         <div class="col-2 navitems">
-            <a href="./Localitzacio.html">
+            <a href="localitzacio">
                 Localització
             </a>
         </div>
         <div class="col-2 navitems">
-            <a href="./PaginaTenda.html">
+            <a href="tenda">
                 Tenda Online
             </a>
         </div>
         <div class="col-2 navitems">
-            <a href="./Contacta.html">
+            <a href="contact">
                 Contacta
             </a>
         </div>
@@ -57,7 +57,7 @@
             </a>
         </div>
         <div class="col-2 navitems">
-            <a href="./PreguntesFreq.html">
+            <a href="pregfrequents">
                 Preguntes Freqüents
             </a>
         </div>
