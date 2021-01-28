@@ -23,7 +23,7 @@ class MovieModel extends Model
      * @param string $tableName
      * @param string $className
      */
-    public function __construct(PDO $pdo, string $tableName = "movie", string $className = Movie::class)
+    public function __construct(PDO $pdo, string $tableName = "producte", string $className = Movie::class)
     {
         parent::__construct($pdo, $tableName, $className);
     }

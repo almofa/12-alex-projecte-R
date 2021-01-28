@@ -87,25 +87,11 @@
         </div>
     </div>
     <div class="row filapatrocinadors">
-        <div class="col-3 imagepatro">
-            <a href="#">
-                <div class="patro" id="primerpatro"></div>
-            </a>
-        </div>
-        <div class="col-3 imagepatro">
-            <a href="#">
-                <div class="patro" id="segonpatro"></div>
-            </a>
-        </div>
-        <div class="col-3 imagepatro">
-            <a href="#">
-                <div class="patro" id="tercerpatro"></div>
-            </a>
-        </div>
-        <div class="col-3 imagepatro">
-            <a href="#">
-                <div class="patro" id="cuartpatro"></div>
-            </a>
-        </div>
+        <?php
+        foreach ($partners as $partner): ?>
+            <div class="col-3 imagepatro"><?= generar_imagen_local($partnersPath , $partner->getLogo(),
+                    $partner->getName(), "patro") ?></div>
+        <?php endforeach; ?>
+
     </div>
 </div>

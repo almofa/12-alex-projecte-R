@@ -11,7 +11,7 @@
     <?php } ?>
     <div class="row">
         <div class="col-sm-12">
-            <h3>Login</h3>
+
             <form method="post" novalidate>
                 <div class="form-group">
                     <label for="username">Username</label>

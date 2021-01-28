@@ -5,14 +5,19 @@ namespace App\Controllers;
 use App\Core\App;
 use App\Core\Controller;
 use App\Core\Router;
+use App\Entity\Product;
+use App\Entity\Tipus;
 use App\Model\GenreModel;
 use App\Model\MovieModel;
 use App\Model\PartnerModel;
+use App\Model\ProductModel;
+use App\Model\TipusModel;
 use App\Utils\MyMail;
 use DateTime;
 use Exception;
 use PDOException;
 use App\Entity\Movie;
+
 
 /**
  * Class DefaultController
@@ -27,15 +32,14 @@ class DefaultController extends Controller
     public function index(): string
     {
         try {
-            $movieModel = App::getModel(MovieModel::class);
-            $movies = $movieModel->findAllPaginated(1, 8,
-                ["release_date" => "DESC", "title" => "ASC"]);
+            $productModel = App::getModel(ProductModel::class);
+            $products = $productModel->findAll();
 
             $partnerModel = App::getModel(PartnerModel::class);
             $partners = $partnerModel->findAll();
 
-            $genreModel = App::getModel(GenreModel::class);
-            $genres = $genreModel->findAll(["name" => "ASC"]);
+            $tipusModel = App::getModel(TipusModel::class);
+            $tipus = $tipusModel->findAll(["nom" => "ASC"]);
 
 
             shuffle($partners);
@@ -47,7 +51,7 @@ class DefaultController extends Controller
             $partnersPath = App::get("config")["partners_path"];
 
             return $this->response->renderView("index", "default", compact('title', 'partners',
-                'movies', 'genres', 'router', 'partnersPath'));
+                'products', 'tipus', 'router', 'partnersPath'));
 
         } catch (PDOException $PDOException) {
             return $PDOException->getMessage();
@@ -60,15 +64,14 @@ class DefaultController extends Controller
     public function sobre(): string
     {
         try {
-            $movieModel = App::getModel(MovieModel::class);
-            $movies = $movieModel->findAllPaginated(1, 8,
-                ["release_date" => "DESC", "title" => "ASC"]);
+            $productModel = App::getModel(ProductModel::class);
+            $products = $productModel->findAll();
 
             $partnerModel = App::getModel(PartnerModel::class);
             $partners = $partnerModel->findAll();
 
-            $genreModel = App::getModel(GenreModel::class);
-            $genres = $genreModel->findAll(["name" => "ASC"]);
+            $tipusModel = App::getModel(TipusModel::class);
+            $tipus = $tipusModel->findAll(["nom" => "ASC"]);
 
 
             shuffle($partners);
@@ -80,7 +83,7 @@ class DefaultController extends Controller
             $partnersPath = App::get("config")["partners_path"];
 
             return $this->response->renderView("sobre", "default", compact( 'partners',
-                'movies', 'genres', 'router', 'partnersPath'));
+                'products', 'tipus', 'router', 'partnersPath'));
 
         } catch (PDOException $PDOException) {
             return $PDOException->getMessage();
@@ -93,15 +96,14 @@ class DefaultController extends Controller
     public function local(): string
     {
         try {
-            $movieModel = App::getModel(MovieModel::class);
-            $movies = $movieModel->findAllPaginated(1, 8,
-                ["release_date" => "DESC", "title" => "ASC"]);
+            $productModel = App::getModel(ProductModel::class);
+            $products = $productModel->findAll();
 
             $partnerModel = App::getModel(PartnerModel::class);
             $partners = $partnerModel->findAll();
 
-            $genreModel = App::getModel(GenreModel::class);
-            $genres = $genreModel->findAll(["name" => "ASC"]);
+            $tipusModel = App::getModel(TipusModel::class);
+            $tipus = $tipusModel->findAll(["nom" => "ASC"]);
 
 
             shuffle($partners);
@@ -113,7 +115,7 @@ class DefaultController extends Controller
             $partnersPath = App::get("config")["partners_path"];
 
             return $this->response->renderView("localitzacio", "default", compact( 'partners',
-                'movies', 'genres', 'router', 'partnersPath'));
+                'products', 'tipus', 'router', 'partnersPath'));
 
         } catch (PDOException $PDOException) {
             return $PDOException->getMessage();
@@ -126,15 +128,14 @@ class DefaultController extends Controller
     public function preguntes(): string
     {
         try {
-            $movieModel = App::getModel(MovieModel::class);
-            $movies = $movieModel->findAllPaginated(1, 8,
-                ["release_date" => "DESC", "title" => "ASC"]);
+            $productModel = App::getModel(ProductModel::class);
+            $products = $productModel->findAll();
 
             $partnerModel = App::getModel(PartnerModel::class);
             $partners = $partnerModel->findAll();
 
-            $genreModel = App::getModel(GenreModel::class);
-            $genres = $genreModel->findAll(["name" => "ASC"]);
+            $tipusModel = App::getModel(TipusModel::class);
+            $tipus = $tipusModel->findAll(["nom" => "ASC"]);
 
 
             shuffle($partners);
@@ -146,7 +147,7 @@ class DefaultController extends Controller
             $partnersPath = App::get("config")["partners_path"];
 
             return $this->response->renderView("pregfrequents", "default", compact( 'partners',
-                'movies', 'genres', 'router', 'partnersPath'));
+                'products', 'tipus', 'router', 'partnersPath'));
 
         } catch (PDOException $PDOException) {
             return $PDOException->getMessage();
@@ -159,15 +160,14 @@ class DefaultController extends Controller
     public function tenda(): string
     {
         try {
-            $movieModel = App::getModel(MovieModel::class);
-            $movies = $movieModel->findAllPaginated(1, 8,
-                ["release_date" => "DESC", "title" => "ASC"]);
+            $productModel = App::getModel(ProductModel::class);
+            $products = $productModel->findAll();
 
             $partnerModel = App::getModel(PartnerModel::class);
             $partners = $partnerModel->findAll();
 
-            $genreModel = App::getModel(GenreModel::class);
-            $genres = $genreModel->findAll(["name" => "ASC"]);
+            $tipusModel = App::getModel(TipusModel::class);
+            $tipus = $tipusModel->findAll(["nom" => "ASC"]);
 
 
             shuffle($partners);
@@ -179,7 +179,7 @@ class DefaultController extends Controller
             $partnersPath = App::get("config")["partners_path"];
 
             return $this->response->renderView("tenda", "default", compact( 'partners',
-                'movies', 'genres', 'router', 'partnersPath'));
+                'products', 'tipus', 'router', 'partnersPath'));
 
         } catch (PDOException $PDOException) {
             return $PDOException->getMessage();

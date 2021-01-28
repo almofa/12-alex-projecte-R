@@ -9,7 +9,7 @@ $router->get("pregfrequents", "DefaultController", "preguntes");
 $router->get("tenda", "DefaultController", "tenda");
 $router->get("api/demo", "DefaultController", "demo");
 
-/*Sobre Nos routes */
+
 
 
 

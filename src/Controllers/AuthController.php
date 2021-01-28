@@ -40,7 +40,7 @@ class AuthController extends Controller
                     $_SESSION["loggedUser"] = $user->getId();
 
                     App::get('flash')->set('message', 'Has entrat');
-                    App::get("redirect")::redirect("movies");
+                    App::get("redirect")::redirect("");
                 }
             } else {
 

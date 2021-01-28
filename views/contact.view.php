@@ -49,9 +49,13 @@
 
             </div>
             <div>
+
+            </div>
+                <br>
                 <input class="btn btn-primary" type="submit" value="Send message">
             </div>
-            </div>
+
+
         </form>
     <? endif; ?>
 </div>
