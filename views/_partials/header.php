@@ -10,18 +10,18 @@
             </form>
         </div>
         <div class="col-4 icones">
+
             <?php $loggedUser = $_SESSION['loggedUser']??[] ?>
 
-                <?php if($loggedUser != []):?>
-
-                        <a class="iconousertamany"  href="/logout">
+                <?php if($loggedUser !== []):?>
+                    <a class="iconousertamany"  href="/logout">
                             <span style="color: #222">Log out<span>
-                        </a>
+                    </a>
 
 
                 <?php else:?>
 
-                        <a class="iconousertamany"  href="/login">
+                        <a class="iconousertamay"  href="/login">
                             <span style="color: #222">Log in</span>
                         </a>
 

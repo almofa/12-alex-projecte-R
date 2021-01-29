@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Core\Controller;
 use App\Core\App;
 use App\Core\Helpers\FlashMessage;
+use App\Core\Security;
 use App\Model\UserModel;
 use App\Core\Router;
 use App\Database;
@@ -22,12 +23,40 @@ class AuthController extends Controller
         return $this->response->renderView('auth/login', 'default', compact('message'));
     }
 
+    public function register()
+    {
+
+        $message = App::get("flash")::get("message");
+        if($_SERVER["REQUEST_METHOD"]==="POST"){
+            $username = filter_input(INPUT_POST, 'user');
+            $password = filter_input(INPUT_POST, 'password');
+            $password2 = filter_input(INPUT_POST, 'password2');
+            $email = filter_input(INPUT_POST, 'email');
+
+            $user = new User();
+            if($password === $password2) {
+
+                $passwordencode = Security::encode($password);
+                $pdo = App::get("DB");
+                $userModel = new UserModel($pdo);
+                $user->setPassword($passwordencode);
+                $user->setUsername($username);
+                $user->setRole("ROLE_USER");
+                $userModel->save($user);
+                App::get('flash')->set('message', 'Inicia sessió per validar');
+                App::get("redirect")::redirect("login");
+
+            }
+        }
+        return $this->response->renderView('login-register', 'default', compact('message'));
+    }
+
     public function checkLogin()
     {
         $messages = [];
         $username = filter_input(INPUT_POST, 'username');
         $password = filter_input(INPUT_POST, 'password');
-
+        $security = new Security();
         if (!empty($username) && !empty($password)) {
             $pdo = App::get("DB");
             $userModel = new UserModel($pdo);
@@ -35,8 +64,8 @@ class AuthController extends Controller
             $user = $userModel->findOneBy(["username" => $username]);
             if (!empty($user)) {
 
-
-                if($user->getUsername() == $username && $user->getPassword() == $password) {
+              $userPassword = $user->getPassword();
+                if(Security::checkPassword($password,$userPassword)) {
                     $_SESSION["loggedUser"] = $user->getId();
 
                     App::get('flash')->set('message', 'Has entrat');

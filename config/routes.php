@@ -13,6 +13,7 @@ $router->get("api/demo", "DefaultController", "demo");
 
 
 
+
 /* Movies routes */
 
 $router->get("movies", "MovieController", "index", [], "", "ROLE_USER");
@@ -49,4 +50,5 @@ $router->post("login", "AuthController", "checkLogin");
 $router->get("logout", "AuthController", "logout");
 $router->post("logout", "AuthController", "checkLogin");
 
-
+$router->get("register", "AuthController", "register");
+$router->post("register", "AuthController", "register");

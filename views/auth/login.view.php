@@ -29,7 +29,10 @@
                 </div>
                 <input type="submit" value="Login">
             </form>
-        </div>
 
+        </div>
+        <a class="" href="/register">
+            <span style="color: #222;" class="mb-2">Or register a new user.</span>
+        </a>
     </div>
 </div>
