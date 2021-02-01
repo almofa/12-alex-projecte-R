@@ -13,4 +13,5 @@ class UserModel extends Model
     {
         parent::__construct($pdo, $tableName, $className);
     }
+
 }

@@ -49,7 +49,7 @@ class PartnerController extends Controller
         } else {
             $partners = $partnerModel->findAll();
         }
-        return $this->response->renderView("partners", "default",
+        return $this->response->renderView("admin", "default",
             compact('title', 'partners', 'router', 'partnersPath'));
     }
 

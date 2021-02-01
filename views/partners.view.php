@@ -1,3 +1,22 @@
+<div class="container-fluid navbar">
+    <div class="row filanav">
+        <div class="col-4 navitems">
+            <a href="admin">
+                Partners
+            </a>
+        </div>
+        <div class="col-4 navitems">
+            <a href="users">
+                Users
+            </a>
+        </div>
+        <div class="col-4 navitems">
+            <a href="products">
+                Productes
+            </a>
+        </div>
+    </div>
+</div>
 <?php if (!empty($message)){?>
 <div class="alert alert-success" role="alert">
     <?=$message ?>

@@ -93,6 +93,38 @@ class DefaultController extends Controller
 
     }
 
+    public function users(): string
+    {
+        try {
+            $productModel = App::getModel(ProductModel::class);
+            $products = $productModel->findAll();
+
+            $partnerModel = App::getModel(PartnerModel::class);
+            $partners = $partnerModel->findAll();
+
+            $tipusModel = App::getModel(TipusModel::class);
+            $tipus = $tipusModel->findAll(["nom" => "ASC"]);
+
+
+            shuffle($partners);
+            $partners = array_slice($partners, 0, 4);
+
+
+            $router = App::get(Router::class);
+
+            $partnersPath = App::get("config")["partners_path"];
+
+            return $this->response->renderView("users", "default", compact( 'partners',
+                'products', 'tipus', 'router', 'partnersPath'));
+
+        } catch (PDOException $PDOException) {
+            return $PDOException->getMessage();
+        } catch (Exception $exception) {
+            return $exception->getMessage();
+        }
+
+    }
+
     public function local(): string
     {
         try {
