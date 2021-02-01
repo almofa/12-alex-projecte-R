@@ -4,6 +4,7 @@
 $router->get("", "DefaultController", "index");
 $router->get("contact", "DefaultController", "contact");
 $router->get("sobre", "DefaultController", "sobre");
+$router->get("admin", "DefaultController", "admin", [],"", "ROLE_ADMIN" );
 $router->get("localitzacio", "DefaultController", "local");
 $router->get("pregfrequents", "DefaultController", "preguntes");
 $router->get("tenda", "DefaultController", "tenda");

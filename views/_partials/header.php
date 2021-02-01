@@ -61,8 +61,8 @@
             </a>
         </div>
         <div class="col-2 navitems">
-            <a href="#">
-                Blog
+            <a href="admin">
+                Administració
             </a>
         </div>
         <div class="col-2 navitems">

@@ -114,10 +114,11 @@ form.searchinput input[type=search] {
     color: white; 
 }
 
-.filanav{
+.filanav {
   background: #39cbb9;
- 
+
 }
+
 
 .navitems{
     display: flex;

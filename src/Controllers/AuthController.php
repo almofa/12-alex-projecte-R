@@ -25,28 +25,48 @@ class AuthController extends Controller
 
     public function register()
     {
-
+        $pdo = App::get("DB");
         $message = App::get("flash")::get("message");
         if($_SERVER["REQUEST_METHOD"]==="POST"){
             $username = filter_input(INPUT_POST, 'user');
-            $password = filter_input(INPUT_POST, 'password');
-            $password2 = filter_input(INPUT_POST, 'password2');
-            $email = filter_input(INPUT_POST, 'email');
-
-            $user = new User();
-            if($password === $password2) {
-
-                $passwordencode = Security::encode($password);
-                $pdo = App::get("DB");
-                $userModel = new UserModel($pdo);
-                $user->setPassword($passwordencode);
-                $user->setUsername($username);
-                $user->setRole("ROLE_USER");
-                $userModel->save($user);
-                App::get('flash')->set('message', 'Inicia sessió per validar');
-                App::get("redirect")::redirect("login");
-
+            if(empty($username)){
+                App::get('flash')->set('message', 'El camp usuari és obligatori');
+                App::get("redirect")::redirect("register");
             }
+
+            $password = filter_input(INPUT_POST, 'password');
+            if(empty($password)){
+                App::get('flash')->set('message', 'El camp contraseña és obligatori');
+                App::get("redirect")::redirect("register");
+            }
+            $password2 = filter_input(INPUT_POST, 'password2');
+            if(empty($password2)){
+                App::get('flash')->set('message', 'Has de validar la contrasenya');
+                App::get("redirect")::redirect("register");
+            }
+
+            $stmt = $pdo->prepare("SELECT username FROM user WHERE username = :username");
+            $stmt->execute([
+                'username' => $username
+            ]);
+            $userm = $stmt->fetch(PDO::FETCH_ASSOC);
+            $user = new User();
+            if (isset($userm) && !empty($userm)){
+                App::get('flash')->set('message', 'Eixe nom està en ús');
+                App::get("redirect")::redirect("register");
+            }
+            else if($password === $password2){
+
+            $passwordencode = Security::encode($password);
+            $pdo = App::get("DB");
+            $userModel = new UserModel($pdo);
+            $user->setPassword($passwordencode);
+            $user->setUsername($username);
+            $user->setRole("ROLE_USER");
+            $userModel->save($user);
+            App::get('flash')->set('message', 'Inicia sessió per validar');
+            App::get("redirect")::redirect("login");
+        }
         }
         return $this->response->renderView('login-register', 'default', compact('message'));
     }
@@ -73,7 +93,7 @@ class AuthController extends Controller
                 }
             } else {
 
-               $message = App::get('flash')->set("message", "No s'ha pogut iniciar sessió");
+                App::get('flash')->set("message", "No s'ha pogut iniciar sessió");
                 App::get('redirect')->redirect("login");
             }
         }
