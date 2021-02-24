@@ -1,56 +1,58 @@
 <?php
 
+
 namespace App\Controllers;
 
 use App\Core\App;
 use App\Core\Controller;
 use App\Core\Router;
 use App\Database;
-use App\Entity\Partner;
+use App\Entity\Product;
 use App\Exception\UploadedFileException;
 use App\Exception\UploadedFileNoFileException;
-use App\Model\PartnerModel;
+use App\Model\ProductModel;
+use App\Model\TipusModel;
 use App\Utils\MyLogger;
 use App\Utils\UploadedFile;
 use Exception;
 use PDO;
-use PDOException;
 
-class PartnerController extends Controller
+
+class ProductController extends Controller
 {
+
+
     function index(): string
     {
-        $title = "Partners - Movie FX";
+        $tipusModel = App::getModel(TipusModel::class);
+        $tipus = $tipusModel->findAll();
 
-        $partnerModel = App::getModel(PartnerModel::class);
+        $productsModel = App::getModel(ProductModel::class);
         $router = App::get(Router::class);
-        $partnersPath = App::get("config")["partners_path"];
-        $partners = $partnerModel->findAll(["name" => "ASC"]);
+        $productsPath = App::get("config")["products_path"];
+        $products = $productsModel->findAll(["name" => "ASC"]);
         $message = App::get("flash")::get("message");
-        return $this->response->renderView("partners", "admin",
-            compact('title', 'partners', 'router', 'partnersPath','message'));
+        return $this->response->renderView("products", "admin",
+            compact('products', 'tipus', 'router', 'productsPath','message'));
     }
 
     function filter(): string
     {
-        $title = "Partners - Movie FX";
-        $partners = [];
-        $partnerModel = App::getModel(PartnerModel::class);
+        $productModel = App::getModel(ProductModel::class);
         $router = App::get(Router::class);
-        $partnersPath = App::get("config")["partners_path"];
+        $productsPath = App::get("config")["products_path"];
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $text = filter_input(INPUT_POST, "text", FILTER_SANITIZE_STRING);
             if (!empty($text)) {
-                $title = "Partners - Filtered by ($text) - Movie FX";
-                $partners = $partnerModel->executeQuery("SELECT * FROM partner WHERE name LIKE :text",
+                $products = $productModel->executeQuery("SELECT * FROM producte WHERE name LIKE :text",
                     ["text" => "%$text%"]);
             } else
                 $error = "Cal introduir una paraula de búsqueda";
         } else {
-            $partners = $partnerModel->findAll();
+            $products = $productModel->findAll();
         }
-        return $this->response->renderView("partners", "admin",
-            compact('title', 'partners', 'router', 'partnersPath'));
+        return $this->response->renderView("products", "admin",
+            compact( 'products', 'router', 'productsPath'));
     }
 
     /**
@@ -59,19 +61,33 @@ class PartnerController extends Controller
      */
     public function create(): string
     {
-        $title = "New partner - Movie FX";
-        return $this->response->renderView("partners-create", "admin", compact('title'));
+        $tipusModel = App::getModel(TipusModel::class);
+        $router = App::get(Router::class);
+        $tipus = $tipusModel->findAll();
+
+        $title = "New product - Actifarma";
+        return $this->response->renderView("products-create", "admin", compact('title', 'tipus'));
     }
 
     public function store(): string
     {
         $errors = [];
-        $title = "New Partner";
+        $title = "New Product";
         $filename = "nofoto.jpg";
 
         $name = filter_input(INPUT_POST, "name");
         if (empty($name)) {
             $errors[] = "The name is mandatory";
+        }
+
+        $preu = filter_input(INPUT_POST, "preu", FILTER_VALIDATE_INT);
+        if (empty($preu)) {
+            $errors[] = "The price is mandatory";
+        }
+
+        $tipus = filter_input(INPUT_POST, "tipus", );
+        if (empty($tipus)) {
+            $errors[] = "The tipus is mandatory";
         }
 
         // if there are errors we don't upload image file
@@ -80,7 +96,7 @@ class PartnerController extends Controller
                 $uploadedFile = new UploadedFile("logo", "300000");
                 if ($uploadedFile->validate()) {
                     // we get the path form config file
-                    $directory = App::get("config")["partners_path"];
+                    $directory = App::get("config")["products_path"];
                     // we use uniqid to generate a uniqid filename;
                     $uploadedFile->save($directory, uniqid("PTN"));
                     // we get the generated name to save it in the db
@@ -97,34 +113,36 @@ class PartnerController extends Controller
         }
         if (empty($errors)) {
             try {
-                $partner = new Partner();
-                $partner->setName($name);
-                $partner->setLogo($filename);
+                $product = new Product();
+                $product->setName($name);
+                $product->setLogo($filename);
+                $product->setPreu($preu);
+                $product->setTipusId($tipus);
 
-                $partnerModel = App::getModel(PartnerModel::class);
-                $partnerModel->save($partner);
+                $productModel = App::getModel(ProductModel::class);
+                $productModel->save($product);
 
                 App::get("flash")->set("message", "S'ha creat correctament");
-                App::get("redirect")::redirect("partners");
+                App::get("redirect")::redirect("products");
 
             } catch (Exception $e) {
                 $errors[] = 'Error: ' . $e->getMessage();
             }
         }
-        return $this->response->renderView("partners-store", "admin", compact('errors', 'title'));
+        return $this->response->renderView("products-store", "admin", compact('errors', 'title'));
     }
 
     public function delete(int $id): string
     {
         $errors = [];
-        $partnerModel = App::getModel(PartnerModel::class);
-        $title = "Partner delete - Movie FX";
-        $partner = $partnerModel->find($id);
+        $productModel = App::getModel(ProductModel::class);
+        $title = "Product delete - Movie FX";
+        $product = $productModel->find($id);
         $router = App::get(Router::class);
-        $partnersPath = App::get("config")["partners_path"];
+        $productsPath = App::get("config")["products_path"];
 
-        return $this->response->renderView("partners-delete", "admin",
-            compact('title', 'partner', 'errors', 'router', 'partnersPath'));
+        return $this->response->renderView("products-delete", "admin",
+            compact('title', 'product', 'errors', 'router', 'productsPath'));
     }
 
 
@@ -134,23 +152,23 @@ class PartnerController extends Controller
         $title = "Partner delete - Movie FX";
         $userAnswer = filter_input(INPUT_POST, "userAnswer");
         $router = App::get(Router::class);
-        $partnersPath = App::get("config")["partners_path"];
+        $productsPath = App::get("config")["products_path"];
         $partner = null;
 
         if (!empty($userAnswer) && $userAnswer == "yes") {
             $id = filter_input(INPUT_POST, "id", FILTER_VALIDATE_INT);
-            $partnerModel = App::getModel(PartnerModel::class);
-            $partner = $partnerModel ->find($id);
-            if (!$partnerModel->delete($partner))
+            $productModel = App::getModel(ProductModel::class);
+            $product = $productModel ->find($id);
+            if (!$productModel->delete($product))
                 $errors[] = "There were errors deleting entity";
         }
         else {
-            $router->redirect('partners');
+            $router->redirect('products');
         }
 
-        $router->redirect('partners');
-        return $this->response->renderView("partners-destroy", "admin",
-            compact('title', 'partner', 'errors', 'router', 'partnersPath'));
+        $router->redirect('products');
+        return $this->response->renderView("products-destroy", "admin",
+            compact('title', 'product', 'errors', 'router', 'productsPath'));
     }
 
     /**
@@ -161,26 +179,29 @@ class PartnerController extends Controller
      */
     public function edit(int $id): string
     {
-        $title = "Edit partner - Movie FX";
+        $tipusModel = App::getModel(TipusModel::class);
+        $tipus = $tipusModel->findAll();
+
+        $title = "Edit product - Movie FX";
         // 1. Get connection
         $pdo = Database::getConnection();
 
         // 2. Prepare query
-        $stmt = $pdo->prepare('SELECT * FROM partner WHERE id=:id');
+        $stmt = $pdo->prepare('SELECT * FROM producte WHERE id=:id');
 
         // 3. Assign parameters values
         $stmt->bindValue("id", $id, PDO::PARAM_INT);
 
         // 4. Execute query
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, Partner::class);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, Product::class);
 
         // 5. Get result
-        $partner = $stmt->fetch();
+        $product = $stmt->fetch();
         $router = App::get(Router::class);
 
-        return $this->response->renderView("partners-edit", "admin", compact('title',
-            'partner', 'router'));
+        return $this->response->renderView("products-edit", "admin", compact('title',
+            'product', "tipus", 'router'));
 
     }
 
@@ -198,6 +219,11 @@ class PartnerController extends Controller
             $errors[] = "The name is mandatory";
         }
 
+        $tipus = filter_input(INPUT_POST, "tipus");
+        if(empty($tipus)){
+            $errors[] = "Tipus is mandatory";
+        }
+
         $filename = filter_input(INPUT_POST, "logo");
 
         // if there are errors we don't upload image file
@@ -206,7 +232,7 @@ class PartnerController extends Controller
                 $uploadedFile = new UploadedFile("logo");
                 if ($uploadedFile->validate()) {
                     // we get the path form config file
-                    $directory = App::get("config")["partners_path"];
+                    $directory = App::get("config")["products_path"];
                     // we use uniqid to generate a uniqid filename;
                     $uploadedFile->save($directory, uniqid("PTN"));
                     // we get the generated name to save it in the db
@@ -221,18 +247,18 @@ class PartnerController extends Controller
 
         if (empty($errors)) {
             try {
-                $partnerModel = App::getModel(PartnerModel::class);
+                $productModel = App::getModel(ProductModel::class);
                 // getting the partner by its identifier
-                $partner = $partnerModel->find($id);
-                $partner->setName($name);
-                $partner->setLogo($filename);
+                $product = $productModel->find($id);
+                $product->setName($name);
+                $product->setLogo($filename);
+                $product->setTipusId($tipus);
                 // updating changes
-                $partnerModel->update($partner);
+                $productModel->update($product);
             } catch (Exception $e) {
                 $errors[] = 'Error: ' . $e->getMessage();
             }
         }
-        return $this->response->renderView("partners-update");
+        return $this->response->renderView("products-update", "admin" );
     }
-
 }

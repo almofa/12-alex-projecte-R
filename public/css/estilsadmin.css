@@ -1,0 +1,356 @@
+@font-face{
+    font-family: Nunito;
+    src: url("./../fonts/LibreFranklin-MediumItalic.ttf");
+
+}
+
+*{
+  font-family: Nunito, serif;
+}
+body{
+  text-align: left;
+}
+
+
+#sidebar{
+  background-color:#10aedf;
+  background-size: cover;
+  height: 100%;
+}
+
+
+#sidebar ul.components{
+  padding: 0;
+  margin-top: 0;
+  
+
+}
+
+#sidebar ul li a:hover{
+  text-decoration: none;
+  opacity: 100%;
+}
+
+#sidebar ul li a{
+  padding: 10px 55px;
+  display: block;
+  opacity: 50%;
+  color: white
+
+}
+
+.logo{
+  color: white;
+  font-weight: bold;
+  text-align: left;
+}
+
+.icono-cubo{
+  transform: rotate(-15deg);
+}
+
+.text-items{
+  font-size: 1.2rem;
+}
+
+
+
+.title-item{
+  font-size: 1.3rem;
+}
+
+.sidebar-brand:hover{
+  text-decoration: none!important;
+}
+
+.cubes{
+  font-size: 2.5rem;
+  text-align: center
+
+
+}
+
+.image-de-perfil{
+  height: 2rem;
+  width: 2rem;
+}
+
+.notifications{
+  position: absolute;
+  right: -.25rem;
+  margin-top: -.25rem;
+  transform: scale(.7);
+  
+}
+.iconos{
+  font-size: 1.2rem;
+ 
+
+}
+
+.small{
+  font-size: 80%;
+  font-weight: 400;
+}
+
+.icon-circle{
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-box-pack: center;
+}
+
+.dropdown-header{
+  color: white!important;
+}
+
+.navbar-dreta{
+  align-items: center
+}
+
+.topbar-divisor{
+  width: 0;
+  border-left: 1px solid #e3e6f0;
+  height: 2.1rem;
+  margin: auto 1rem;
+}
+
+
+
+@media (max-width: 600px) {
+  #sidebar ul li a{
+    padding: 10px 10px;
+  }
+  
+  .title-item{
+    display: none;
+  }
+
+  .nav-item{
+    text-align: center
+  }
+}
+
+.borde-primary{
+  border-left: 0.25rem solid #4e73df!important;
+}
+
+
+.borde-success{
+  border-left: 0.25rem solid #62c488!important;
+}
+.borde-info{
+  border-left: 0.25rem solid #62c1c4!important;
+}
+
+.borde-warning{
+  border-left: 0.25rem solid #eee01c!important;
+}
+
+.padding-footer{
+  padding: 2rem 0;
+  
+}
+
+.imagefons{
+  background-image: url('./img/fons.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#usuari{
+  padding: 0;
+}
+
+#imgfons{
+  width: 100%;
+  height: auto;
+  border-top-right-radius: 1%;
+  border-top-left-radius: 1%;
+}
+
+.padding-item{
+  padding: 2rem 0;
+
+
+}
+
+#usuari-foto{
+  position: relative;
+  margin-top: -100px;
+  width: 100px;
+  height: auto;
+  border: 2px white solid;
+}
+
+.footer{
+    background-color: rgb(29, 26, 26);
+  
+  }
+  
+  .footer li{
+    list-style: none;
+  }
+  
+  .filafooter{
+    display: flex;
+    align-content: space-around;
+    justify-content: center;
+   
+  }
+  
+  .footeritems{
+    text-align: center;
+    position: relative;
+      width: 100%;
+      margin-top: 35px;
+      margin-bottom: 35px;
+  }
+  
+  .titolsfooter{
+    font-size: 25px;
+    color: white;
+  
+    
+  }
+  .contitul{
+    margin-bottom: 20px;
+  }
+  
+  .contingutfooter a{
+    line-height: 1.5em;
+    color: rgb(192, 192, 192);
+    text-decoration: none;
+  
+  }
+  
+  .contingutfooter a:hover{
+    color: #19c3ae;
+  }
+  
+  .contingutfooter .list-inline{
+      display: block;
+      list-style-type: disc;
+      text-align: center;
+      margin-block-end: 1em;
+      margin-inline-start: 0;
+      margin-inline-end: 0;
+      padding-inline-start: 0;
+  }
+  
+  .inline-item {
+    display: inline-block;
+    margin-right:  1em;
+    margin-left:  1em;
+  }
+
+  .derechosreserv{
+      font-size: 12px;
+  }
+
+  .copyfinal{
+      color: #7d7d7d;
+  }
+
+  /*calendar*/
+  .member.selected .calendar {
+	height: 340rem;
+	opacity: 1;
+}
+
+.calendar {
+	width: 100%;
+	margin-top: 0;
+	height: 0;
+	font-size: 13px;
+	border-top: 1px solid rgba(221, 221, 221, 0.8);
+}
+
+.wrap {
+	color: #312eff;
+}
+
+.calendar .date {
+	opacity: 0;
+}
+
+.calendar .date, .calendar .month, .calendar .year {
+
+	
+	font-weight: 100;
+	
+}
+
+.calendar table {
+	width: 100%;
+	text-align: center;
+	border-top: 1px solid white;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.calendar table {
+	text-align: center;
+}
+
+
+.calendar table td, .calendar table th {
+	width: 13%;
+
+	cursor: pointer;
+	font-weight: 200;
+}
+
+.borrar-icono{
+    color: black;
+    opacity: 50%;
+}
+
+.borrar-icono:hover{
+    color: black;
+    opacity: 100%;
+    text-decoration: none
+}
+
+.images-taula{
+  width: 5rem;
+  height: auto;
+}
+
+input[type="file"]#nuestroinput {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+  }
+
+  label[for="nuestroinput"] {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #19c3ae;
+    display: inline-block;
+    transition: all .5s;
+    cursor: pointer;
+    padding: 15px 40px !important;
+    text-transform: uppercase;
+    width: fit-content;
+    text-align: center;
+    }
+
+    .carousel-control-prev{
+      color: black!important;
+    }
+    
+    .carousel-control-next{
+      color: black!important;
+    }

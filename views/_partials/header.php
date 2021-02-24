@@ -61,7 +61,7 @@
             </a>
         </div>
         <div class="col-2 navitems">
-            <a href="admin">
+            <a href="partners">
                 Administració
             </a>
         </div>

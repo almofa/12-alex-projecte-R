@@ -14,6 +14,7 @@ return [
     ,
     "logfile" => "my_app.log",
     "loglevel" => Logger::DEBUG,
+    "products_path" =>"images/products/",
     "partners_path" => "images/partners/",
     "posters_path" => "images/posters/",
     'mailer' => [

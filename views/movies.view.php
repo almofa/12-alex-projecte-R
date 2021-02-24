@@ -6,84 +6,246 @@
         </button>
     </div>
 <?php } ?>
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <form method="post" action="<?php use App\Entity\Movie;
+<div class="container-fluid">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0">Inici</h1>
 
-            $_SERVER["PHP_SELF"] ?>"
-                  class="form-inline  justify-content-center my-4">
-                <div class="form-group">
-                    <input name="text" class="form-control mr-sm-4"
-                           value="<?= ($_POST["text"]) ?? "" ?>"
-                           type="text" placeholder="Search" aria-label="Search">
-                </div>
-                <div class="form-check-inline">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="optradio" id="title" value="title">&nbsp;title                        &nbsp;
-                    </label>
-                </div>
-                <div class="form-check-inline">
-                    <label class="form-check-inline">
-                        <input class="form-check-input" type="radio" name="optradio" id="tagline" value="tagline">&nbsp;tagline                        &nbsp;
-                    </label></div>
-                <div class="form-check-inline">
-                    <label class="form-check-inline">
-                        <input class="form-check-input" type="radio" name="optradio" id="both" value="both" checked>&nbsp;both                        &nbsp;
-                    </label>
-                </div>
-                <div class="form-group">
-                    <button class="form-control btn btn-secondary my-2 my-sm-0" type="submit" name="botonFiltrar">Search</button>
-                </div>
-            </form>
-            <div class="text-right mb-3"><a class="btn btn-primary" href="/movies/create"
-                                            title="create a new partner"> <i class="fa fa-plus-circle">
-                    </i> New Movie</a>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6 mb-4">
+            <div class="card shadow mb-4">
+                <div class="card-header">Coses a fer</div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+
+                        <div class="d-sm-flex align-items-center justify-content-between">
+                            <div>
+                                Revisar productes tenda
+                                <div class="small text-gray-500">9:45h</div>
+                            </div>
+                            <input type="checkbox">
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="d-sm-flex align-items-center justify-content-between">
+                            <div>
+                                Activar funcionalitats usuaris
+                                <div class="small text-gray-500">14:30h</div>
+                            </div>
+                            <input type="checkbox">
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="d-sm-flex align-items-center justify-content-between">
+                            <div>
+                                Ajustar formulari pagament
+                                <div class="small text-gray-500">12:30h</div>
+                            </div>
+                            <input type="checkbox">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card shadow mb-4">
+                <div class="card-header">Notes</div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+
+                        <div class="d-sm-flex align-items-center justify-content-between">
+                            <div>
+                                Els productes de cosmètica no estan actius per comprar
+                            </div>
+                            <a class="borrar-icono" href=""> ×</a>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="d-sm-flex align-items-center justify-content-between">
+                            <div>
+                                No es poden accelarar les vendes
+                            </div>
+                            <a class="borrar-icono" href="">×</a>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="d-sm-flex align-items-center justify-content-between">
+                            <div>
+                                Nova Nota:
+                                <textarea class="form-control"></textarea>
+
+                            </div>
+                            <button type="button" class="btn btn-primary">Crear</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="col-lg-6 mb-4">
+            <div class="card shadow mb-4">
+                <div class="card-header ">Pàgines</div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+
+                        <div class="d-sm-flex align-items-center justify-content-between">
+                            <div>
+                                <a href="./Home.html"> Home</a>
+
+                            </div>
+
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+
+                        <div class="d-sm-flex align-items-center justify-content-between">
+                            <div>
+                                <a href="./SobreNosaltres.html"> Sobre Nosaltres</a>
+
+                            </div>
+
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+
+                        <div class="d-sm-flex align-items-center justify-content-between">
+                            <div>
+                                <a href="./Localitzacio.html"> Localització</a>
+
+                            </div>
+
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+
+                        <div class="d-sm-flex align-items-center justify-content-between">
+                            <div>
+                                <a href="./Contacta.html"> Contacta</a>
+
+                            </div>
+
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+
+                        <div class="d-sm-flex align-items-center justify-content-between">
+                            <div>
+                                <a href="./PaginaTenda.html"> Pàgina Tenda</a>
+
+                            </div>
+
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+
+                        <div class="d-sm-flex align-items-center justify-content-between">
+                            <div>
+                                <a href="./PreguntesFreq.html">Preguntes Freqüents</a>
+
+                            </div>
+
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+
+                        <div class="d-sm-flex align-items-center justify-content-between">
+                            <div>
+                                <a href="./Carret.html"> Carret</a>
+
+                            </div>
+
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+
+                        <div class="d-sm-flex align-items-center justify-content-between">
+                            <div>
+                                <a href="./FinCompra.html"> Finalització de lal compra</a>
+
+                            </div>
+
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+
+                        <div class="d-sm-flex align-items-center justify-content-between">
+                            <div>
+                                <a href="./Blog.html"> Blog / Noticies</a>
+
+                            </div>
+
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+
+                        <div class="d-sm-flex align-items-center justify-content-between">
+                            <div>
+                                <a href="./Salut.html"> Salut</a>
+
+                            </div>
+
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+
+                        <div class="d-sm-flex align-items-center justify-content-between">
+                            <div>
+                                <a href="./Cosmetica.html"> Cosmètica</a>
+
+                            </div>
+
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+
+                        <div class="d-sm-flex align-items-center justify-content-between">
+                            <div>
+                                <a href="./Higiene.html"> Higiene</a>
+
+                            </div>
+
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
-        <p><?= $error ?? "" ?></p>
-    </div>
-    <?php if (empty($movies)) : ?>
-        <h3>No s'ha trobar cap element</h3>
-    <?php else: ?>
-        <table class="table table-condensed">
-            <tr>
-                <th>Poster</th>
-                <th>Title <a href="/movies?order=title&&tipo=ASC"><i
-                            class="fa fa-arrow-down"></i></a>
-                    <a href="/movies?order=title&&tipo=DESC"><i
-                                class="fa fa-arrow-up"></i></a></th>
-                <th>Tagline</th>
-                <th>Genre</th>
-                <th>Release date<a href="/movies?order=release_date&amp;tipo=ASC"><i
-                                class="fa fa-arrow-down"></i></a>
-                    <a href="/movies?order=release_date&amp;tipo=DESC"><i
-                                class="fa fa-arrow-up"></i></a></th>
-                </th>
-                <th>Actions</th>
-            </tr>
-            <?php foreach ($movies as $movie) { ?>
-                <tr>
-                    <td> <?= generar_imagen_local(Movie::POSTER_PATH . '/', $movie->getPoster(),
-                            $movie->getTitle(), 200, 100) ?> </td>
-                    <td><?= $movie->getTitle() ?></td>
-                    <td><?= $movie->getTagline() ?></td>
-                    <td><?php $genre = $movieModel->getGenre($movie->getGenreId());
-                                echo $genre->getName() ?></td>
-                    <td><?= $movie->getReleaseDate()->format("d-M-Y") ?></td>
-                    <td style="width: 140px"><a href="/movies/<?= $movie->getId() ?>/edit">
-                            <button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button>
-                        </a>
-                        <a href="<?=$router->getUrl("movies_delete", ["id"=>$movie->getId()]) ?>">
-                            <button type="button" class="btn btn-warning"><i class="fa fa-trash"></i></button>
-                        </a>
-                    </td>
-                </tr>
-                <?php
-            }
-            ?>
-        </table>
-    <?php endif; ?>
 
-    <!-- /.row -->
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-12 col-lg-12">
+            <div class="card shadow mb-4">
+                <div class="card-header d-flex flex-row align-items-center justify-content-between">
+                    <h6 >Evolució de vendes</h6>
+                    <div class="dropdown no-arrow">
+                        <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow">
+                            <div class="dropdown-header text-secondary">Altres opcions:</div>
+                            <div class="dropdown-item">Exportar</div>
+                            <div class="dropdown-item">Actualitzar</div>
+                            <div class="dropdown-divider"></div>
+                            <div class="dropdown-item">Revisar</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+
+
+                    <canvas id="Chart" style="display: block; width: 843px; height: 320px;" width="843"
+                            height="320px" class="chartjs-render-monitor"></canvas>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
 </div>

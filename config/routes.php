@@ -4,7 +4,6 @@
 $router->get("", "DefaultController", "index");
 $router->get("contact", "DefaultController", "contact");
 $router->get("sobre", "DefaultController", "sobre");
-$router->get("admin", "DefaultController", "admin", [],"", "ROLE_ADMIN" );
 $router->get("localitzacio", "DefaultController", "local");
 $router->get("pregfrequents", "DefaultController", "preguntes");
 $router->get("tenda", "DefaultController", "tenda");
@@ -33,18 +32,26 @@ $router->post("movies/:id/edit", "MovieController", "edit", ["id" => "number"], 
 $router->get("movies/:id/delete", "MovieController", "delete", ["id"=>"number"], "movies_delete", "ROLE_ADMIN");
 $router->post("movies/delete", "MovieController", "destroy", [],"movies_destroy", "ROLE_ADMIN");
 
+
+
 /*Users routes */
 $router->get("users", "UserController", "index", [], "users_index", "ROLE_ADMIN");
-$router->post("users", "UserController", "filter", [], "users_filter", "ROLE_ADMIN");
 
-$router->get("users/create", "UserController", "create", [], "users_create","ROLE_ADMIN");
-$router->post("users/create", "UserController", "store", [], "users_store","ROLE_ADMIN");
 
-$router->get("users/:id/edit", "UserController", "edit", ["id"=>"number"], "users_edit","ROLE_ADMIN");
-$router->post("users/:id/edit", "UserController", "update", ["id"=>"number"], "users_update","ROLE_ADMIN");
 
-$router->get("users/:id/delete", "UserController", "delete", ["id"=>"number"], "users_delete","ROLE_ADMIN");
-$router->post("users/delete", "UserController", "destroy", [], "users_destroy","ROLE_ADMIN");
+/*Products routes*/
+$router->get("products", "ProductController", "index", [], "products_index", "ROLE_ADMIN");
+$router->post("products", "ProductController", "filter", [], "products_filter", "ROLE_ADMIN");
+
+$router->get("products/create", "ProductController", "create", [], "products_create","ROLE_ADMIN");
+$router->post("products/create", "ProductController", "store", [], "products_store","ROLE_ADMIN");
+
+$router->get("products/:id/edit", "ProductController", "edit", ["id"=>"number"], "products_edit","ROLE_ADMIN");
+$router->post("products/:id/edit", "ProductController", "update", ["id"=>"number"], "products_update","ROLE_ADMIN");
+
+$router->get("products/:id/delete", "ProductController", "delete", ["id"=>"number"], "products_delete","ROLE_ADMIN");
+$router->post("products/delete", "ProductController", "destroy", [], "products_destroy","ROLE_ADMIN");
+
 
 /* Partners routes */
 $router->get("partners", "PartnerController", "index", [], "partners_index", "ROLE_ADMIN");
