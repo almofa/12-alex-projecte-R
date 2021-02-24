@@ -42,21 +42,21 @@
 
                     <ul class="navbar-nav navbar-dreta ml-auto">
 
-                        <li class="nav-item dropdown px-3 mr-2">
+                        <li class="nav-item dropdown px-3 mr-5">
                             <a class="nav-link dropdown" href="#" id="navbarDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Àlex Morell</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                                 <i class="fa fa-user"></i>
 
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#"><i class="far fa-user-circle"></i>Perfil</a>
-                                <a class="dropdown-item" href="#"><i class="fas fa-cog"></i>Configuració</a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/perfil"><i class="far fa-user-circle"></i>Perfil</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i>Log out</a>
+                                <a class="dropdown-item" href="/logout"><i class="fas fa-sign-out-alt"></i>Log out</a>
                             </div>
                         </li>
                     </ul>
                 </div>
             </nav>
+
 

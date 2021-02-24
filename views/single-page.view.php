@@ -1,19 +1,15 @@
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <?php use App\Entity\Movie;
+        <?php use App\Entity\Product;
 
         if (empty($errors)) : ?>
-            <div class="col-lg-3 col-md-6 my-4">
-                <?= generar_imagen_local('/'. Movie::POSTER_PATH, $movie->getPoster(),
-                    $movie->getTitle(), "rounded w-100") ?>
+            <div class="col-4">
+                <img src="/images/products/<?=$product->getLogo()?>">
             </div>
-            <div class="col-lg-9 col-md-6 my-5">
-                <h1><?= $movie->getTitle() ?></h1>
-                <p class="text-muted"><?= $movie->getReleaseDate()->format("d-M-Y") ?> · Action</p>
-                <h2><em><?= $movie->getTagline() ?>.</em></h2>
-                <h5 class="text-muted">Overview</h5>
-                <p><?= $movie->getOverview() ?></p>
-                <p class="text-muted">★ ★ ★ ★ ☆</p>
+            <div class="col-8 ">
+                <h1 style="margin-bottom: 0!important;"><?= $product->getName() ?></h1>
+                <hr>
+                <h2 style=" padding: 2rem"><em style="color: #1e7e34;"> <?= $product->getPreu() ?>€</em></h2>
             </div>
         <?php else :?>
             <? foreach ($errors as $error) ?>

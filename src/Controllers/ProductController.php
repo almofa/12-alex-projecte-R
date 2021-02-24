@@ -5,6 +5,7 @@ namespace App\Controllers;
 
 use App\Core\App;
 use App\Core\Controller;
+use App\Core\Exception\NotFoundException;
 use App\Core\Router;
 use App\Database;
 use App\Entity\Product;
@@ -260,5 +261,26 @@ class ProductController extends Controller
             }
         }
         return $this->response->renderView("products-update", "admin" );
+    }
+
+    public function show(int $id): string
+    {
+        $errors = [];
+        if (!empty($id)) {
+            try {
+                $productModel = new ProductModel(App::get("DB"));
+                $product = $productModel->find($id);
+                return $this->response->renderView("single-page", "default", compact(
+                    "errors", "product"));
+
+            } catch (NotFoundException $notFoundException) {
+                $errors[] = $notFoundException->getMessage();
+            }
+        }
+        else
+            return $this->response->renderView("single-page", "default", compact(
+                "errors"));
+
+        return "";
     }
 }

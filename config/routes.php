@@ -52,6 +52,8 @@ $router->post("products/:id/edit", "ProductController", "update", ["id"=>"number
 $router->get("products/:id/delete", "ProductController", "delete", ["id"=>"number"], "products_delete","ROLE_ADMIN");
 $router->post("products/delete", "ProductController", "destroy", [], "products_destroy","ROLE_ADMIN");
 
+$router->get("products/:id/show", "ProductController", "show",
+    ["id" => "number"], "products_show");
 
 /* Partners routes */
 $router->get("partners", "PartnerController", "index", [], "partners_index", "ROLE_ADMIN");

@@ -10,9 +10,9 @@
                     <? endforeach; ?>
                 </ul>
                 <?php require __DIR__ . '/partners/form-create.view.php'; ?>
-            <?php else: ?>
+            <? else:?>
                 <h2>The partner has been inserted successfully!</h2>
-            <? endif ?>
+            <?php endif;?>
         </div>
     </div>
     <!-- /.row -->
