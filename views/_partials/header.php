@@ -38,7 +38,7 @@
         </div>
     </div>
 </div>
-<div class="container-fluid navbar">
+<div class="container-fluid">
     <div class="row filanav">
         <div class="col-2 navitems">
             <a href="sobre">

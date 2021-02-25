@@ -43,11 +43,17 @@
                     <p><a href="<?=$router->getUrl("products_show", ["id"=>$product->getId()])?>"><?= $product->getName() ?></a></p>
                     <p class="preu"> <?=$product->getPreu()?> €</p>
                     <button class="comprar">COMPRAR</button>
-
                 </div>
             </div>
         </div>
         <?php endforeach;?>
+        <nav class="d-flex justify-content-center" aria-label="Page navigation">
+            <ul  class="pagination">
+                <?php for( $i = 1 ; $i <= $total_pages ; $i++): ?>
+                <li style="border: none; padding: 0" class="page-item"><a class="page-link" href="http://12-alex-projecte.local/tenda?page=<?= $i ?>"><?=$i?></a></li>
+                <?php endfor; ?>
+            </ul>
+        </nav>
 
         </div>
                 </div>

@@ -15,6 +15,7 @@ use App\Model\TipusModel;
 use App\Utils\MyMail;
 use DateTime;
 use Exception;
+use PDO;
 use PDOException;
 use App\Entity\Movie;
 
@@ -32,14 +33,11 @@ class DefaultController extends Controller
     public function index(): string
     {
         try {
-            $productModel = App::getModel(ProductModel::class);
-            $products = $productModel->findAll();
+
 
             $partnerModel = App::getModel(PartnerModel::class);
             $partners = $partnerModel->findAll();
 
-            $tipusModel = App::getModel(TipusModel::class);
-            $tipus = $tipusModel->findAll(["nom" => "ASC"]);
 
 
             shuffle($partners);
@@ -50,8 +48,8 @@ class DefaultController extends Controller
 
             $partnersPath = App::get("config")["partners_path"];
 
-            return $this->response->renderView("index", "default", compact('title', 'partners',
-                'products', 'tipus', 'router', 'partnersPath'));
+            return $this->response->renderView("index", "default", compact('title', 'partners'
+                , 'router', 'partnersPath' ));
 
         } catch (PDOException $PDOException) {
             return $PDOException->getMessage();
@@ -192,8 +190,40 @@ class DefaultController extends Controller
     public function tenda(): string
     {
         try {
-            $productModel = App::getModel(ProductModel::class);
-            $products = $productModel->findAll();
+            $conn = App::get("DB");
+
+            $numberOfRecordsPerPage = 8;
+
+            // el número de pàgina es sol passar en un paràmetre del _querystring_.
+            $currentPage = filter_input(INPUT_GET, "page", FILTER_VALIDATE_INT);
+
+            // si $currentPage és false o null després del filter_input assignarem
+            // el valor 1 per defecte.
+
+            if (empty($currentPage))
+                $currentPage = 1;
+
+            // Calculem el offset
+            // si $currentPage = 1, $offset = 0
+            // si $currentPage = 2, $offset = 4
+            $offset = ($currentPage-1)*$numberOfRecordsPerPage;
+
+            // el límit el determina la grandària de pàgina
+            $limit = $numberOfRecordsPerPage;
+
+            $stmt=$conn->prepare("SELECT * FROM producte LIMIT :limit OFFSET :offset");
+            $stmt->bindValue(':limit', "$limit", PDO::PARAM_INT);
+            $stmt->bindValue(':offset', "$offset", PDO::PARAM_INT);
+            $stmt->execute();
+            $products = $stmt->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, Product::class);
+
+            $sqlcount = "select count(*) as total_records from producte";
+            $stmt = $conn->prepare($sqlcount);
+            $stmt->execute();
+            $row = $stmt->fetch();
+            $total_records = $row['total_records'];
+
+            $total_pages = ceil($total_records / $limit);
 
             $partnerModel = App::getModel(PartnerModel::class);
             $partners = $partnerModel->findAll();
@@ -211,7 +241,7 @@ class DefaultController extends Controller
             $partnersPath = App::get("config")["partners_path"];
 
             return $this->response->renderView("tenda", "default", compact( 'partners',
-                'products', 'tipus', 'router', 'partnersPath'));
+                'products', 'tipus', 'router', 'partnersPath' , "total_pages"));
 
         } catch (PDOException $PDOException) {
             return $PDOException->getMessage();

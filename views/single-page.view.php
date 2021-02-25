@@ -10,6 +10,7 @@
                 <h1 style="margin-bottom: 0!important;"><?= $product->getName() ?></h1>
                 <hr>
                 <h2 style=" padding: 2rem"><em style="color: #1e7e34;"> <?= $product->getPreu() ?>€</em></h2>
+                <p style="color: #a8a8a8"><?= strtoupper($productModel->getType($product->getTipusId())->getNom()) ?></p>
             </div>
         <?php else :?>
             <? foreach ($errors as $error) ?>

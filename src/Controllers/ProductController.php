@@ -271,7 +271,7 @@ class ProductController extends Controller
                 $productModel = new ProductModel(App::get("DB"));
                 $product = $productModel->find($id);
                 return $this->response->renderView("single-page", "default", compact(
-                    "errors", "product"));
+                    "errors", "product" , "productModel"));
 
             } catch (NotFoundException $notFoundException) {
                 $errors[] = $notFoundException->getMessage();
@@ -279,7 +279,7 @@ class ProductController extends Controller
         }
         else
             return $this->response->renderView("single-page", "default", compact(
-                "errors"));
+                "errors" , ));
 
         return "";
     }

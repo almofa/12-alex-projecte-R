@@ -3,6 +3,7 @@
 
 namespace App\Model;
 
+use App\Core\App;
 use App\Core\Model;
 use App\Entity\Product;
 use PDO;
@@ -15,4 +16,9 @@ class ProductModel extends Model
         parent::__construct($pdo, $tableName, $className);
     }
 
+    public function  getType (int $id){
+        $typeModel = App::getModel(TipusModel::class);
+        $type = $typeModel->find($id);
+        return $type;
+    }
 }
