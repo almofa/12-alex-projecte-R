@@ -36,8 +36,10 @@ $router->post("movies/delete", "MovieController", "destroy", [],"movies_destroy"
 
 /*Users routes */
 $router->get("users", "UserController", "index", [], "users_index", "ROLE_ADMIN");
+$router->get("perfil", "UserController", "show", [], "users_show", "ROLE_USER" );
 
-
+$router->get("perfil/:id/editpass", "UserController", "edit", ["id" => "number"],"users_edit", "ROLE_USER");
+$router->post("perfil/:id/editpass", "UserController", "update", ["id" => "number"], "users_update", "ROLE_USER");
 
 /*Products routes*/
 $router->get("products", "ProductController", "index", [], "products_index", "ROLE_ADMIN");
