@@ -96,7 +96,7 @@ class UserController extends Controller
         return $this->response->renderView("users-edit", "default", compact(
             "errors", "isGetMethod", "usuario"));
     }
-
+/*aplicar els canvis*/
     public function update(int $id): string
     {
 
