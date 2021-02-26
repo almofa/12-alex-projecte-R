@@ -12,28 +12,6 @@ $router->get("users","DefaultController", "users", [], "", "ROLE_ADMIN" );
 
 
 
-
-
-
-/* Movies routes */
-
-$router->get("movies", "MovieController", "index", [], "", "ROLE_USER");
-$router->post("movies", "MovieController", "filter", [], "","ROLE_USER");
-
-$router->get("movies/:id/show", "MovieController", "show",
-    ["id" => "number"], "movies_show");
-
-$router->get("movies/create", "MovieController", "create", [], "", "ROLE_USER");
-$router->post("movies/create", "MovieController", "store", [],"", "ROLE_USER");
-
-$router->get("movies/:id/edit", "MovieController", "edit", ["id" => "number"], "", "ROLE_USER");
-$router->post("movies/:id/edit", "MovieController", "edit", ["id" => "number"], "", "ROLE_USER");
-
-$router->get("movies/:id/delete", "MovieController", "delete", ["id"=>"number"], "movies_delete", "ROLE_ADMIN");
-$router->post("movies/delete", "MovieController", "destroy", [],"movies_destroy", "ROLE_ADMIN");
-
-
-
 /*Users routes */
 $router->get("users", "UserController", "index", [], "users_index", "ROLE_ADMIN");
 $router->get("perfil", "UserController", "show", [], "users_show", "ROLE_USER" );
@@ -56,6 +34,7 @@ $router->post("products/delete", "ProductController", "destroy", [], "products_d
 
 $router->get("products/:id/show", "ProductController", "show",
     ["id" => "number"], "products_show");
+
 
 /* Partners routes */
 $router->get("partners", "PartnerController", "index", [], "partners_index", "ROLE_ADMIN");
