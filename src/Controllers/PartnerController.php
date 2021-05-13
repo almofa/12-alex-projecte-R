@@ -98,8 +98,6 @@ class PartnerController extends Controller
         if (empty($errors)) {
             try {
                 $partner = new Partner();
-                $partner->setName($name);
-                $partner->setLogo($filename);
 
                 $partnerModel = App::getModel(PartnerModel::class);
                 $partnerModel->loadData($_POST, $partner);
