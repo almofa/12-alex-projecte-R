@@ -102,6 +102,9 @@ class PartnerController extends Controller
                 $partner->setLogo($filename);
 
                 $partnerModel = App::getModel(PartnerModel::class);
+                $partnerModel->loadData($_POST, $partner);
+               var_dump($partner);
+
                 $partnerModel->save($partner);
 
                 App::get("flash")->set("message", "S'ha creat correctament");

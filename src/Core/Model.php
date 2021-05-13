@@ -319,4 +319,19 @@ abstract class Model
             throw new AppException("pagination error: ".$PDOException->getMessage());
         }
     }
+
+    public function loadData(array $data, Entity $entity):Entity
+    {
+        foreach ($data as $key =>$value){
+            if(property_exists($this->className, $key)){
+                $func = "set".ucwords($key, '_');
+                $func=str_replace("_", "", $func);
+
+                if(method_exists($this->className, $func)){
+                    $entity->$func($value);
+                }
+            }
+        }
+        return $entity;
+    }
 }
