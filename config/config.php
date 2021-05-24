@@ -21,10 +21,10 @@ return [
         'smtp_server' => "smtp.gmail.com",
         'smtp_port' => 587,
         'smtp_security' => 'tls',
-        'username' => 'vjorda.pego@gmail.com',
+        'username' => 'alexfar83@gmail.com',
         'password' => 'fakepassword',
-        'email' => 'vjorda.pego@gmail.com',
-        'name' => 'Vicent Jordà'
+        'email' => 'alexfar83@gmail.com',
+        'name' => 'Alex'
     ],
     "security" => ["roles" =>
         [

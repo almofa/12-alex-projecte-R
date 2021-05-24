@@ -101,7 +101,7 @@ class PartnerController extends Controller
 
                 $partnerModel = App::getModel(PartnerModel::class);
                 $partner->setLogo($filename);
-                $partnerModel->loadData($_POST, $partner);
+                $partner->setName($name);
                var_dump($partner);
 
                 $partnerModel->save($partner);

@@ -7,8 +7,6 @@ use App\Core\Controller;
 use App\Core\Router;
 use App\Entity\Product;
 use App\Entity\Tipus;
-use App\Model\GenreModel;
-use App\Model\MovieModel;
 use App\Model\PartnerModel;
 use App\Model\ProductModel;
 use App\Model\TipusModel;
@@ -17,7 +15,7 @@ use DateTime;
 use Exception;
 use PDO;
 use PDOException;
-use App\Entity\Movie;
+
 
 
 /**
@@ -291,26 +289,16 @@ class DefaultController extends Controller
 
             if (empty($errors)) {
                 $fullMessage = "$name ($email)\n $subject\n $message";
-                App::get(MyMail::class)->send("contact form", "vjorda.pego@gmail.com", "Vicent", $fullMessage);
-            }
+                App::get(MyMail::class)->send("contact form", "alexfar83@gmail.com", "Alex", $fullMessage);
 
+            }
             return $this->response->renderView("contact", "default", compact('errors',
                 'name', 'date', 'subject', 'message', 'email'));
+
+
         } else
             return $this->response->renderView("contact", "default");
 
     }
 
-    /**
-     * @return string
-     * @throws \App\Core\Exception\ModelException
-     */
-    public function demo(): string
-    {
-        $movieModel = App::getModel(MovieModel::class);
-        $movies = $movieModel->findAllPaginated(1, 8,
-            ["release_date" => "DESC", "title" => "ASC"]);
-        return $this->response->jsonResponse($movies);
-
-    }
 }

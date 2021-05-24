@@ -3,6 +3,7 @@
 /* Default routes */
 $router->get("", "DefaultController", "index");
 $router->get("contact", "DefaultController", "contact");
+$router->post("contact", "DefaultController", "contact");
 $router->get("sobre", "DefaultController", "sobre");
 $router->get("localitzacio", "DefaultController", "local");
 $router->get("pregfrequents", "DefaultController", "preguntes");
