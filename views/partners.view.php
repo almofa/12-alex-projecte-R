@@ -22,9 +22,9 @@
 
     </div>
     <div class="row p-3">
-        <? if (empty($partners)) : ?>
+        <?php if (empty($partners)) { ?>
             <h3>No s'ha trobat cap element</h3>
-        <? else: ?>
+        <?php }else{  ?>
         <table class="table table-striped shadow " >
             <tr>
                 <th class="text-center">Foto</th>
@@ -32,7 +32,7 @@
                 <th class="text-center">Accions</th>
             </tr>
 
-            <?php foreach ($partners as $partner) : ?>
+            <?php foreach ($partners as $partner) {?>
                 <tr>
                     <td class="text-center"><?= $partner->getName() ?></td>
                     <td class="text-center"><img alt="logo" style="width: 200px; height: auto" class="img-thumbnail" src="<?= $partnersPath . $partner->getLogo() ?>"></td>
@@ -44,9 +44,9 @@
                     </td>
 
                 </tr>
-            <?php endforeach; ?>
+            <?php } ?>
         </table>
-        <? endif; ?>
+        <?php } ?>
 
 
 

@@ -71,40 +71,35 @@ class AuthController extends Controller
         return $this->response->renderView('login-register', 'default', compact('message'));
     }
 
-    public function checkLogin()
-    {
-        $messages = [];
-        $username = filter_input(INPUT_POST, 'username');
-        $password = filter_input(INPUT_POST, 'password');
-        $security = new Security();
-        if (!empty($username) && !empty($password)) {
-            $pdo = App::get("DB");
-            $userModel = new UserModel($pdo);
-            $router = App::get(Router::class);
-            $user = $userModel->findOneBy(["username" => $username]);
-            if (!empty($user)) {
 
-              $userPassword = $user->getPassword();
-                if(Security::checkPassword($password,$userPassword)) {
-                    $_SESSION["loggedUser"] = $user->getId();
-
-                    App::get('flash')->set('message', 'Has entrat');
-                    App::get("redirect")::redirect("");
-                }
-            } else {
-
-                App::get('flash')->set("message", "No s'ha pogut iniciar sessió");
-                App::get('redirect')->redirect("login");
-            }
-        }
-    }
+       public function checkLogin(): void
+       {
+           $username = filter_input(INPUT_POST, 'username');
+           $password = filter_input(INPUT_POST, 'password');
+           if (!empty($username) && !empty($password)) {
+               $userModel = App::getModel(UserModel::class);
+               $user = $userModel->findOneBy(["username"=>$username]);
+               if (!empty($user)) {
+                   if (Security::checkPassword($password, $user->getPassword() )) {
+                       $_SESSION["loggedUser"] = $user->getId();
+                       App::get('flash')->set("message", "S'ha iniciat sessió");
+                       if ($user->getRole() === "ROLE_ADMIN") {
+                           App::get(Router::class)->redirect("products");
+                       }
+                       App::get(Router::class)->redirect("");
+                   }
+               }
+           }
+           App::get('flash')->set("message", "No s'ha pogut iniciar sessió");
+           App::get(Router::class)->redirect("login");
+       }
 
     public function logout()
     {
         session_unset();
+        unset($_SESSION);
         session_destroy();
-        setcookie(session_name());
-        App::get('redirect')->redirect("");
+        App::get(Router::class)->redirect("");
         return $this->response->renderView('auth/login');
     }
 }

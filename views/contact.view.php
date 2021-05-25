@@ -1,19 +1,19 @@
 <div class="container">
-    <h1>Contact form</h1>
+    <h1>Formulari de contacte</h1>
     <?php if ($_SERVER['REQUEST_METHOD']==='POST' && empty($errors)) {?>
         <h2>Missatge enviat</h2>
-        <p>Nom: <?=$name ?></p>
-        <p>Email: <?=$email ?></p>
-        <p>Data de naixement: <?=$date->format("Y-m-d") ?></p>
-        <p>Assumpte: <?=$subject ?></p>
-        <p>Missatge: <?=$message ?></p>
+        <p><b>Nom:</b> <?=$name ?></p>
+        <p><b>Email:</b> <?=$email ?></p>
+        <p><b>Data de naixement:</b> <?=$date->format("Y-m-d") ?></p>
+        <p><b>Assumpte:</b> <?=$subject ?></p>
+        <p><b>Missatge:</b> <?=$message ?></p>
     <?php }else {?>
 
         <?php if (!empty($errors)) {?>
-            <h2>Hi ha errors en processar el formulari</h2>
+            <h2 style="color: red">Hi ha errors en processar el formulari</h2>
             <ul>
                 <?php foreach ($errors as $error) {?>
-                    <li><?=$error?></li>
+                    <li style="color: red"><?=$error?></li>
                 <?php }?>
             </ul>
         <?php } ?>

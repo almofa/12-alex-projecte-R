@@ -40,10 +40,10 @@ class Security
     }
 
     public static function encode(string $password): string{
-        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-        return $passwordHash;
+
+        return password_hash($password, PASSWORD_DEFAULT);
     }
-public static function checkPassword(string $password, string $userPassword): string{
+public static function checkPassword(string $password, string $userPassword): bool{
     return password_verify($password, $userPassword);
 
 }

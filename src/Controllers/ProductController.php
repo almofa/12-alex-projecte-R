@@ -25,8 +25,10 @@ class ProductController extends Controller
 
     function index(): string
     {
+
         $tipusModel = App::getModel(TipusModel::class);
         $tipus = $tipusModel->findAll();
+
 
         $productsModel = App::getModel(ProductModel::class);
         $router = App::get(Router::class);
@@ -39,6 +41,7 @@ class ProductController extends Controller
 
     function filter(): string
     {
+        $products=[];
         $productModel = App::getModel(ProductModel::class);
         $router = App::get(Router::class);
         $productsPath = App::get("config")["products_path"];
@@ -51,6 +54,7 @@ class ProductController extends Controller
                 $error = "Cal introduir una paraula de búsqueda";
         } else {
             $products = $productModel->findAll();
+
         }
         return $this->response->renderView("products", "admin",
             compact( 'products', 'router', 'productsPath'));

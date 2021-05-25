@@ -58,3 +58,4 @@ $router->post("logout", "AuthController", "checkLogin");
 
 $router->get("register", "AuthController", "register");
 $router->post("register", "AuthController", "register");
+

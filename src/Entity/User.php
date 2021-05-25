@@ -13,15 +13,6 @@ class User implements Entity
     private string $password;
     private string $role;
 
-    /**
-     * User constructor.
-     * @param int|null $id
-     * @param string $username
-     * @param string $password
-     * @param string $role
-     */
-
-
 
     /**
      * @return int|null
@@ -33,12 +24,10 @@ class User implements Entity
 
     /**
      * @param int|null $id
-     * @return User
      */
-    public function setId(?int $id): User
+    public function setId(?int $id): void
     {
         $this->id = $id;
-        return $this;
     }
 
     /**
@@ -51,12 +40,10 @@ class User implements Entity
 
     /**
      * @param string $username
-     * @return User
      */
-    public function setUsername(string $username): User
+    public function setUsername(string $username): void
     {
         $this->username = $username;
-        return $this;
     }
 
     /**
@@ -69,12 +56,10 @@ class User implements Entity
 
     /**
      * @param string $password
-     * @return User
      */
-    public function setPassword(string $password): User
+    public function setPassword(string $password): void
     {
         $this->password = $password;
-        return $this;
     }
 
     /**
@@ -87,12 +72,10 @@ class User implements Entity
 
     /**
      * @param string $role
-     * @return User
      */
-    public function setRole(string $role): User
+    public function setRole(string $role): void
     {
         $this->role = $role;
-        return $this;
     }
 
     public function toArray(): array

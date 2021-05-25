@@ -10,17 +10,17 @@
                         <img src="/images/ACTIFARMAsense.png" class="w-75">
                     </a>
                     <li class="nav-item py-1 ">
-                        <a class="nav-link collapsed" href="partners"  aria-expanded="true">
+                        <a class="nav-link collapsed" href="/../partners"  aria-expanded="true">
                             <i class="fa fa-tachometer-alt"></i>
                             <span class="text-items d-none d-sm-none d-md-none  d-lg-flex">Partners</span>
                         </a>
                     <li class="nav-item py-1">
-                        <a class="nav-link collapsed" href="users"  aria-expanded="true">
+                        <a class="nav-link collapsed" href="/../users"  aria-expanded="true">
                             <i class="fa fa-user"></i>
                             <span class="text-items d-none d-sm-none d-md-none  d-lg-flex">Usuaris</span>
                         </a>
                     <li class="nav-item py-1 ">
-                        <a class="nav-link collapsed" href="products"  aria-expanded="true">
+                        <a class="nav-link collapsed" href="/../products"  aria-expanded="true">
                             <i class="fa fa-table"></i>
                             <span class="text-items d-none d-sm-none d-md-none d-lg-flex">Productes</span>
                         </a>

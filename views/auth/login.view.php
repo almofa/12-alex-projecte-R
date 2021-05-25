@@ -14,18 +14,18 @@
 
             <form method="post" novalidate>
                 <div class="form-group">
-                    <label for="username">Username</label>
+                    <label for="username">Usuari</label>
                     <input type="text" class="form-control"
                            name="username" id="username"
                            value="<?= null ?? "" ?>"
-                           placeholder="Username:" required>
+                           placeholder="Usuari.." required>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="text" class="form-control"
+                    <label for="password">Contrasenya</label>
+                    <input type="password" class="form-control"
                            name="password" id="password"
                            value="<?= null ?? "" ?>"
-                           placeholder="Password:" required>
+                           placeholder="Contrasenya.." required>
                 </div>
                 <input type="submit" value="Login">
             </form>

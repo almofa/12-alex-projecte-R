@@ -12,25 +12,22 @@
 
 </div>
 <div class="row p-3">
-    <? if (empty($users)) : ?>
+    <?php if(empty($users)) { ?>
         <h3>No s'ha trobat cap element</h3>
-    <? else: ?>
+    <?php }else{ ?>
         <table class="table table-striped shadow " >
             <tr>
                 <th class="text-center">Nom</th>
                 <th class="text-center">Rol</th>
             </tr>
 
-            <?php foreach ($users as $user) : ?>
+            <?php foreach ($users as $user){ ?>
                 <tr>
                     <td class="text-center"><?= $user->getUsername() ?></td>
                     <td class="text-center"><?= $user->getRole() ?></td>
 
                 </tr>
-            <?php endforeach; ?>
+            <?php } ?>
         </table>
-    <? endif; ?>
-
-
-
+    <?php } ?>
 </div>
