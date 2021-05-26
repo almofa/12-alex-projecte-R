@@ -25,6 +25,8 @@
                 <tr>
                     <td class="text-center"><?= $user->getUsername() ?></td>
                     <td class="text-center"><?= $user->getRole() ?></td>
+                    <td class="text-center"> <a class="btn btn-primary" href="<?=$router->getUrl("users_editar", ["id"=>$user->getId()])?>">
+                            <i class="fa fa-edit"></i> Edita</a></td>
 
                 </tr>
             <?php } ?>

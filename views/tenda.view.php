@@ -1,3 +1,10 @@
+<?php
+
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    $product_id = filter_input(INPUT_POST, "id");
+    var_dump($product_id);
+} ?>
+
 <div class="container-fluid maintenda">
     <div class="row primeratenda">
         <div class="col-3 hamburguesa">
@@ -33,6 +40,7 @@
         </div>
     </div>
     <div class="row filatitoltenda">
+        <form action="carrito" method="post">
         <?php foreach ($products as $product):?>
         <div class="col-3 contenedorprod">
             <div class=" product">
@@ -42,10 +50,12 @@
                 <div class="textproducte">
                     <p><a href="<?=$router->getUrl("products_show", ["id"=>$product->getId()])?>"><?= $product->getName() ?></a></p>
                     <p class="preu"> <?=$product->getPreu()?> €</p>
-                    <button class="comprar">COMPRAR</button>
+                    <input type="hidden" name="id" value="<?=$product->getId()?>">
+             <button type="submit" class="comprar">Afegir al carret</button>
                 </div>
             </div>
         </div>
+        </form>
         <?php endforeach;?>
         <nav class="d-flex justify-content-center" aria-label="Page navigation">
             <ul  class="pagination">

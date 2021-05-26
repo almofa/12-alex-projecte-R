@@ -2,16 +2,16 @@
     <div class="row">
         <div class="col-8">
             <h1>Edit product</h1>
-            <?php if (!empty($errors)): ?>
+            <?php if (!empty($errors)){ ?>
                 <ul>
-                    <?php foreach ($errors as $error) : ?>
+                    <?php foreach ($errors as $error){?>
                         <li><?= $error ?></li>
-                    <? endforeach; ?>
+                    <?php}?>
                 </ul>
                 <?php require 'views/products/form-edit.view.php'; ?>
-            <?php else: ?>
+            <?php }else{ ?>
                 <h2>The product has been updated successfully!</h2>
-            <? endif ?>
+            <?php } ?>
 
         </div>
         <div class="col-4"></div>

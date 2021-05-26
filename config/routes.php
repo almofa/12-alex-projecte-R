@@ -12,13 +12,15 @@ $router->get("api/demo", "DefaultController", "demo");
 $router->get("users","DefaultController", "users", [], "", "ROLE_ADMIN" );
 
 
-
 /*Users routes */
 $router->get("users", "UserController", "index", [], "users_index", "ROLE_ADMIN");
 $router->get("perfil", "UserController", "show", [], "users_show", "ROLE_USER" );
 
 $router->get("perfil/:id/editpass", "UserController", "edit", ["id" => "number"],"users_edit", "ROLE_USER");
 $router->post("perfil/:id/editpass", "UserController", "update", ["id" => "number"], "users_update", "ROLE_USER");
+
+$router->get("users/:id/edit", "UserController", "editar", ["id"=>"number"], "users_editar","ROLE_ADMIN");
+$router->post("users/:id/edit", "UserController", "updated", ["id"=>"number"], "users_updated","ROLE_ADMIN");
 
 /*Products routes*/
 $router->get("products", "ProductController", "index", [], "products_index", "ROLE_ADMIN");
