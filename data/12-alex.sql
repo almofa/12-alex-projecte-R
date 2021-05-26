@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Temps de generació: 26-02-2021 a les 13:32:24
--- Versió del servidor: 10.4.14-MariaDB
--- Versió de PHP: 7.4.9
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 26-05-2021 a las 13:50:26
+-- Versión del servidor: 10.4.17-MariaDB
+-- Versión de PHP: 7.4.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de dades: `12-alex`
+-- Base de datos: `12-alex`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `partner`
+-- Estructura de tabla para la tabla `partner`
 --
 
 CREATE TABLE `partner` (
@@ -34,57 +34,42 @@ CREATE TABLE `partner` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Bolcament de dades per a la taula `partner`
+-- Volcado de datos para la tabla `partner`
 --
 
 INSERT INTO `partner` (`id`, `name`, `logo`) VALUES
-(2, 'Eucerin', 'eucerin_logo.jpg'),
-(3, 'Cinfa', 'cinfa_logo.jpg'),
-(5, 'Uriage', 'PTN6034bbadd9207.png'),
-(7, 'Españita', 'PTN6038a7b68f7c3.jpg');
+(1, 'cinfa', 'cinfa_logo.jpg'),
+(2, 'eucerin', 'eucerin_logo.jpg'),
+(3, 'sisheido', 'shiseido_logo.png'),
+(4, 'uriage', 'uriage-logo.png');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `producte`
+-- Estructura de tabla para la tabla `producte`
 --
 
 CREATE TABLE `producte` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `preu` int(11) NOT NULL,
+  `preu` int(255) NOT NULL,
   `logo` varchar(255) NOT NULL,
   `tipus_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Bolcament de dades per a la taula `producte`
+-- Volcado de datos para la tabla `producte`
 --
 
 INSERT INTO `producte` (`id`, `name`, `preu`, `logo`, `tipus_id`) VALUES
-(1, 'BIODERMA gel protector', 8, 'cosmetica1.jpg', 2),
-(2, 'ISIDIN crema fotoprotectora', 10, 'cosmetica2.jpg', 2),
-(5, 'XHEKPON crema revitalizante 333ml', 13, 'cosmetica3.jpg', 2),
-(7, 'BIODERMA crema hidratante 256ml', 15, 'cosmetica4.jpg', 2),
-(9, 'HELIOCARE crema protectora/hidrantante 200ml', 30, 'cosmetica5.jpg', 2),
-(10, 'TROFOLASTIN crema anti-estrías 250ml', 21, 'cosmetica6.jpg', 2),
-(11, 'Sterillium gel antiséptico de manos con válvula 475ml', 9, 'higiene2.jpg', 1),
-(12, 'Ducray Kelual DS champú estados descamativos 100ml', 11, 'higiene3.jpg', 1),
-(15, 'Oral-B® Pro-Expert pasta dentífrica Multi-Protección 2x100ml', 13, 'higiene4.jpg', 1),
-(16, 'Bioderma Atoderm gel de ducha 1l', 15, 'higiene5.jpg', 1),
-(19, 'Lacer Clorhexidina colutorio 500ml', 30, 'higiene6.jpg', 1),
-(20, 'Cumlaude hidratante interno 6uds', 4, 'higiene8.jpg', 1),
-(23, 'Armolipid Plus 20comp', 8, 'salud2.jpg', 3),
-(24, 'Alflorex&reg; para Colon Irritable 30 C&aacute;', 10, 'salud3.jpg', 2),
-(27, 'Tena Men Level 3 16uds', 15, 'salud5.jpg', 3),
-(28, 'Avène Cicalfate crema reparadora 100ml', 30, 'salud6.jpg', 3),
-(31, 'Oxicol 28Cáps', 4, 'salud8.jpg', 3),
-(32, 'Supradyn® Activo 90comp + 30comp', 22, 'salud11.jpg', 3);
+(1, 'Producte1 ', 19, 'cosmetica1.jpg', 2),
+(2, 'Producte2', 10, 'higiene2.jpg', 1),
+(4, 'Producte3', 12, 'salud2.jpg', 5);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `tipus`
+-- Estructura de tabla para la tabla `tipus`
 --
 
 CREATE TABLE `tipus` (
@@ -93,99 +78,101 @@ CREATE TABLE `tipus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Bolcament de dades per a la taula `tipus`
+-- Volcado de datos para la tabla `tipus`
 --
 
 INSERT INTO `tipus` (`id`, `nom`) VALUES
 (1, 'higiene'),
 (2, 'cosmetica'),
-(3, 'salut');
+(5, 'salut');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `user`
+-- Estructura de tabla para la tabla `user`
 --
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
-  `role` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `role` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Bolcament de dades per a la taula `user`
+-- Volcado de datos para la tabla `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `role`, `password`) VALUES
-(1, 'user', 'ROLE_USER', '$2y$12$VwwJnexXWZTO8TSmOUQg/uNSwCV3ZRjv3toPewZfVwQNK2XMGZ7VK'),
-(2, 'admin', 'ROLE_ADMIN', '$2y$10$0Yzbi/q9e6Ar7xRMMTMQLOzZ32XTkJplZhNqDwfoEi9JZTAwXyZJC'),
-(6, 'paco', 'ROLE_USER', '$2y$10$pQr/PIPHnjUYzwdWBxG48ugjPhWqoHkhVQ.0LxdtSwBigxnFWhzYO');
+INSERT INTO `user` (`id`, `username`, `password`, `role`) VALUES
+(1, 'user', '$2y$12$xbtEssmGj0BLjsNeUIC3deqFq0J9TTAW5hjs9vtrKeO/EJk6yLYLm', 'ROLE_USER'),
+(2, 'admin', '$2y$12$/YwHdopGzv0476J1.Cu4f.yu9oCyMZXdtrhDfAhg1liOOUj9F4dSi', 'ROLE_ADMIN'),
+(3, 'paco', '$2y$12$lWwpIIxZTMj5b1KX2UAkgu7lqxz9BFdtcYNUn2deUkOm0Tbh6hmbi', 'ROLE_USER'),
+(5, 'estelita', '$2y$10$I5MakJH/Zk4GQ8J1X7vvEeG9NHqfT2juon7scHsltbQkz.io93b9W', 'ROLE_USER'),
+(6, 'SDGSD', '$2y$10$t5bkErdXm3QXwKL6Imih8OGOdknDMcct2RJZuapVTtJtwSL8XGnnO', 'ROLE_USER');
 
 --
--- Índexs per a les taules bolcades
+-- Índices para tablas volcadas
 --
 
 --
--- Índexs per a la taula `partner`
+-- Indices de la tabla `partner`
 --
 ALTER TABLE `partner`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índexs per a la taula `producte`
+-- Indices de la tabla `producte`
 --
 ALTER TABLE `producte`
   ADD PRIMARY KEY (`id`),
   ADD KEY `tipus_id` (`tipus_id`);
 
 --
--- Índexs per a la taula `tipus`
+-- Indices de la tabla `tipus`
 --
 ALTER TABLE `tipus`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índexs per a la taula `user`
+-- Indices de la tabla `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT per les taules bolcades
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT per la taula `partner`
+-- AUTO_INCREMENT de la tabla `partner`
 --
 ALTER TABLE `partner`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT per la taula `producte`
+-- AUTO_INCREMENT de la tabla `producte`
 --
 ALTER TABLE `producte`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
-
---
--- AUTO_INCREMENT per la taula `tipus`
---
-ALTER TABLE `tipus`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT per la taula `user`
+-- AUTO_INCREMENT de la tabla `tipus`
+--
+ALTER TABLE `tipus`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- Restriccions per a les taules bolcades
+-- Restricciones para tablas volcadas
 --
 
 --
--- Restriccions per a la taula `producte`
+-- Filtros para la tabla `producte`
 --
 ALTER TABLE `producte`
   ADD CONSTRAINT `producte_ibfk_1` FOREIGN KEY (`tipus_id`) REFERENCES `tipus` (`id`);
